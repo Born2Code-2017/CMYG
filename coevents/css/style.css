@@ -14,15 +14,18 @@
   --dirty-white: #eff2f3;
   --white: #fff;
   --black: #000;
+  --red: #f00;
   --trans: all .4s ease;
 }
 
 ::-webkit-input-placeholder {
   color: var(--sea-green);
 }
+
 ::-moz-placeholder {
   color: var(--sea-green);
 }
+
 :-ms-input-placeholder {
   color: var(--sea-green);
 }
@@ -351,6 +354,11 @@ button,
   height: 88px;
 }
 
+#loggedUser p{
+  color: #fff;
+  margin-top: 0;
+}
+
 #menu .menu-nav {
   height: calc(100% - 120px);
   padding: 2rem 1.5rem;
@@ -511,7 +519,7 @@ p.category {
   min-height: 150px;
 }
 
-.card-header,
+.§card-header,
 .card-btn,
 .card-content {
   position: relative;
@@ -572,12 +580,12 @@ p.category {
   padding: .625rem 1rem;
 }
 
-.card-content>p {
+.card-content > p {
   margin: .625rem 0;
   line-height: 1.2;
 }
 
-.card-content>p i {
+.card-content > p i {
   margin-right: .625rem;
 }
 
@@ -603,6 +611,10 @@ p.category {
   background: transparent;
   padding: .625rem;
   margin: .315rem 0;
+}
+
+.form-group input.error {
+  border-bottom: 1px solid var(--red);
 }
 
 .form-group label:not(.login-check) {
@@ -655,7 +667,7 @@ input[type="checkbox"]:checked::after {
   font-size: 1.5rem;
 }
 
-input[type="checkbox"]+label {
+input[type="checkbox"] + label {
   color: var(--sea-green);
   font-size: .825rem;
   position: absolute;
@@ -721,6 +733,15 @@ button:hover::after {
   width: 50%;
 }
 
+#login-error {
+  width: calc(100% - 1.25rem);
+  text-align: center;
+  font-size: 1rem;
+  color: var(--red);
+  font-weight: 700;
+  margin: .625rem;
+}
+
 @media only screen and (max-width: 576px) {
   #login {
     padding: 1rem;
@@ -742,7 +763,7 @@ button:hover::after {
 }
 
 @media only screen and (max-width: 576px) and (max-height: 480px) {
-   :root {
+  :root {
     font-size: 14px;
   }
 
@@ -754,5 +775,87 @@ button:hover::after {
 
   #login-form main #lost-password-form main {
     padding: .5rem 1rem;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  :root {
+    font-size: 14px;
+  }
+
+  #menu {
+    width: 100%;
+    max-height: 50px;
+    overflow: hidden;
+  }
+
+  #menu .menu-logo {
+    height: 100%;
+    padding: 0;
+  }
+
+  #menu .menu-logo h1 {
+    background-image: url('../img/logo-small.png');
+    margin: 0;
+    height: 30px;
+    width: 145px;
+    top: 50%;
+    margin-top: -15px;
+    position: absolute;
+    margin-left: 1rem;
+  }
+
+  #events,
+  #calendar {
+    width: 100%;
+  }
+
+  #events {
+    padding: 1.14rem;
+  }
+
+  .row.brb {
+    margin: 0;
+    width: 100%;
+  }
+
+  .card.is-3,
+  .card.is-2,
+  .card.is-1 {
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  .is-1 .card-header,
+  .is-1 .card-btn {
+    float: left;
+    height: 100px;
+    width: 50%;
+    padding: 0;
+    background: transparent;
+  }
+
+  .is-1 .card-content {
+    width: 100%;
+  }
+
+  .is-1 .card-btn .btn {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .card.is-3 {
+    width: calc(50% - 1.5rem);
+    min-height: 250px;
+  }
+
+  .calendar .calendar-days .category {
+    font-size: .625rem;
+  }
+
+  .calendar .calendar-days .category:nth-child(3) {
+    margin-top: 1.25rem;
   }
 }
