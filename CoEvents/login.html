@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Login - CoEvents</title>
+  <meta name="description" content="Benvenuto nell'applicazione CoEvents, effettua il login">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="apple-touch-icon" sizes="180x180" href="./img/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon/favicon-16x16.png">
+  <link rel="manifest" href="./img/favicon/manifest.json">
+  <link rel="mask-icon" href="./img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="./img/favicon/favicon.ico">
+  <meta name="msapplication-config" content="./img/favicon/browserconfig.xml">
+  <meta name="theme-color" content="#2facb2">
+</head>
+<body id="login">
+<div id="login-form">
+  <header>
+    <h1><span>CoEvents</span></h1>
+  </header>
+  <main>
+    <form id="form" name="login-form" method="post" action="index.html" novalidate>
+      <div class="form-group">
+        <input id="username" type="text" name="username" required>
+        <label for="username" id="luser">Username (your email)</label>
+      </div>
+      <div class="form-group">
+        <input id="password" type="password" name="password" required>
+        <label for="password" id="lpass">Password</label>
+      </div>
+      <div class="form-group tl">
+        <input type="checkbox" name="remember" id="remember"><label class="login-check">Remember Me</label>
+      </div>
+      <div class="form-group">
+        <button type="submit" id="loginbtn">Sign In</button>
+      </div>
+      <div class="form-group tc">
+        <p id="login-error"></p>
+        <a href="remember-password.html">Forgot your password?</a>
+      </div>
+    </form>
+  </main>
+  <footer class="tc">
+    CoEvents by CMYG &nbsp; <i class="fa fa-fw fa-heart" aria-hidden="true"></i>
+  </footer>
+</div>
+<link href="https://fonts.googleapis.com/css?family=Oxygen:300,400,700|Raleway:300,400,700" rel="stylesheet">
+<link rel="stylesheet" href="./css/style.css">
+<script src="https://use.fontawesome.com/2d4722d32d.js" async defer></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="./js/firebase.js"></script>
+<script src="./js/main.js"></script>
+</body>
+</html>

@@ -2,13 +2,13 @@
 
 This is the official repo of the group CMYG of Born2Code Academy.
 
-[_*Here*_](https://born2code.it/), you will find out more about that Academy.
+[_*Here*_](https://born2code.it/), you can learn more about that Academy.
 
 ## How this repo is organized
 
 #### Documentation
 
-All the documentation about the project is avaible into the `Documentation` folder.
+All the documentation about the project is available into the `Documentation` folder.
 
 #### Grapichs
 
@@ -28,5 +28,5 @@ The source code of our project will be found into the `Angular-CoEvents` folder.
 You found a bug?
 Have you noticed something that can be improved?
 
-Please open an [*issue*](https://github.com/Born2Code-2017/CMYG/issues) with the template that you can found into the `Documentation` folder.
+Please open an [*issue*](https://github.com/Born2Code-2017/CMYG/issues) with the template that you can find into the `Documentation` folder.
 
