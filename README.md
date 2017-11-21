@@ -18,6 +18,10 @@ You can find the Wireframe, the Visual and a little style guide about our projec
 
 Into the folder `CoEvents`, you will found a little versions, let's call it "Pre-Release" in pure HTML5, CSS3 and vanillaJS plus jQuery.
 
+#### Planning 
+
+The `Planning` folder contain our plannig about the state of the Angular Project since 21 November.
+
 #### Final Version
 
 The source code of our project will be found into the `Angular-CoEvents` folder.
