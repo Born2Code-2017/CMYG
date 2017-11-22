@@ -10,17 +10,17 @@ This is the official repo of the group CMYG of Born2Code Academy.
 
 All the documentation about the project is available into the `Documentation` folder.
 
-#### Grapichs
+#### Graphics
 
-You can find the Wireframe, the Visual and a little style guide about our project into the `Graphics` folder.
+You can find the Wireframe, the Visual and a little style guide about our project in the `Graphics` folder.
 
 #### Pre Release
 
-Into the folder `CoEvents`, you will found a little versions, let's call it "Pre-Release" in pure HTML5, CSS3 and vanillaJS plus jQuery.
+In the folder `CoEvents`, you will find a little version, let's call it "Pre-Release" in pure HTML5, CSS3 and vanillaJS plus jQuery.
 
 #### Planning 
 
-The `Planning` folder contain our plannig about the state of the Angular Project since 21 November.
+The `Planning` folder contain our plannigs about the state of the Angular Project since 21 November.
 
 #### Final Version
 
@@ -29,8 +29,8 @@ The source code of our project will be found into the `Angular-CoEvents` folder.
 
 ## Want to contribute?
 
-You found a bug?
+Have you found a bug?
 Have you noticed something that can be improved?
 
-Please open an [*issue*](https://github.com/Born2Code-2017/CMYG/issues) with the template that you can find into the `Documentation` folder.
+Please open an [*issue*](https://github.com/Born2Code-2017/CMYG/issues) with the template that you can find in the `Documentation` folder.
 
