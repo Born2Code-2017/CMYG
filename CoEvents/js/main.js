@@ -217,7 +217,7 @@ let rememberPassword = {
 
     for (let u in rememberPassword.users) {
       if (typeof user.val() === "string" && contAt === true && secondP !== "") {
-        if (user.val() === rememberPassword.users[u].username) {
+        if (user.val() === rememberPassword.users[u].email) {
           user.removeClass("error");
           alert("Ti invieremo una mail con la nuova password");
           window.location.href = "login.html";
