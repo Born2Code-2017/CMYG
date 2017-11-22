@@ -133,8 +133,8 @@ let login = {
         secondP  = partUser[1];
 
     for (let u in login.users) {
-      if (typeof user === "string" && contAt === true && secondP !== "") {
-        if (user === login.users[u].username) {
+      if (typeof user === "string" && contAt === true) {
+        if (user === login.users[u].email) {
           login.userOk = true;
           login.saveUser = user;
           break;
@@ -373,7 +373,7 @@ let dashboard = {
         card.attr("data-tags", dashboard.events[event].tags);
 
         c_header.addClass("card-header fill-img");
-        c_header_img.attr("src", dashboard.events[event].image);
+        c_header_img.attr("src", dashboard.events[event].imgPath);
         c_header_img.appendTo(c_header);
 
         c_btn.addClass("card-btn");
@@ -385,10 +385,10 @@ let dashboard = {
         c_content.addClass("card-content");
         c_content_p_n.addClass("bold");
         c_content_p_n.html(CALENDAR_ICON + dashboard.events[event].name);
-        c_content_p_dh.html(CLOCK_ICON + dashboard.events[event].date + ' | ' + dashboard.events[event].timeStart + ' - ' + dashboard.events[event].timeEnd);
+        c_content_p_dh.html(CLOCK_ICON + dashboard.events[event].dateStart + ' | ' + dashboard.events[event].timeStart + ' - ' + dashboard.events[event].timeEnd);
         c_content_p_st.html(MAP_ICON + dashboard.events[event].location);
         c_content_p_c.addClass('category');
-        c_content_p_c.text(dashboard.events[event].tags);
+        c_content_p_c.text('#' + dashboard.events[event].tags);
 
         c_content_p_n.appendTo(c_content);
         c_content_p_dh.appendTo(c_content);
@@ -416,7 +416,7 @@ let dashboard = {
 
           if (cat.indexOf(c) >= 0) {
             $(this).fadeIn(500);
-            h2Filter.text(c + " Events");
+            h2Filter.text("#" + c + " Events");
           } else if (c === "all") {
             card.fadeIn(500);
             h2Filter.text("Today's Events");
