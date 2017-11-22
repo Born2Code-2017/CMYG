@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Angular 5 Course",
+    "location": "Via Marsala 29/H, 00185 Roma RM",
+    "dateStart": "2017-11-21",
+    "dateEnd": "2017-11-21",
+    "timeStart": "09:00:00",
+    "timeEnd": "18:00:00",
+    "imgPath": "./assets/img/events.png",
+    "tags": "work",
+    "description": "Introduction to Angular 5 for beniggers",
+    "url": "angular-5-course",
+    "owner": "admin",
+    "partecipants": "",
+    "interested": "",
+    "notGoing": ""
+  },
+  {
+    "name": "React: Introduction and More - Day 1",
+    "location": "Via Marsala 29/H, 00185 Roma RM",
+    "dateStart": "2017-11-24",
+    "dateEnd": "2017-11-24",
+    "timeStart": "09:00:00",
+    "timeEnd": "13:00:00",
+    "imgPath": "./assets/img/events.png",
+    "tags": "work",
+    "description": "Introduction to React for beginners",
+    "url": "react-introduction-day-1",
+    "owner": "Guich",
+    "partecipants": "",
+    "interested": "",
+    "notGoing": ""
+  },
+  {
+    "name": "React: Gooing Deeper",
+    "location": "Via Marsala 29/H, 00185 Roma RM",
+    "dateStart": "2017-11-25",
+    "dateEnd": "2017-11-26",
+    "timeStart": "09:00:00",
+    "timeEnd": "13:00:00",
+    "imgPath": "./assets/img/events.png",
+    "tags": "work",
+    "description": "Gooing Deeper into React and its logic",
+    "url": "react-introduction-day-2",
+    "owner": "Yulia",
+    "partecipants": "",
+    "interested": "",
+    "notGoing": ""
+  }
+]

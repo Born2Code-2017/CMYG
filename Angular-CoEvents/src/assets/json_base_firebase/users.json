@@ -1,0 +1,32 @@
+[
+  {
+    "username": "admin",
+    "email": "admin@born2code.it",
+    "password": "admin",
+    "privilege": "admin"
+  },
+  {
+    "username": "Guich",
+    "email": "guich@born2code.it",
+    "password": "guich",
+    "privilege": "admin"
+  },
+  {
+    "username": "Yulia",
+    "email": "yulia@born2code.it",
+    "password": "yulia",
+    "privilege": "user"
+  },
+  {
+    "username": "Candida",
+    "email": "candida@born2code.it",
+    "password": "candida",
+    "privilege": "user"
+  },
+  {
+    "username": "Massimo",
+    "email": "massimo@born2code.it",
+    "password": "massimo",
+    "privilege": "user"
+  }
+]

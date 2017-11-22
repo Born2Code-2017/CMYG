@@ -1,0 +1,159 @@
+:root {
+  font-size: 16px;
+  --dark-gray: #3b4446;
+  --light-gray: #7b868a;
+  --light-gray-o: rgba(175, 175, 175, .8);
+  --blue-sapphire: #166a8f;
+  --sea-green: #2facb2;
+  --sea-green-o: rgba(48, 170, 176, .5);
+  --dirty-white: #eff2f3;
+  --white: #fff;
+  --black: #000;
+  --red: #f00;
+  --trans: all .4s ease;
+}
+
+::-webkit-input-placeholder {
+  color: var(--sea-green);
+}
+
+::-moz-placeholder {
+  color: var(--sea-green);
+}
+
+:-ms-input-placeholder {
+  color: var(--sea-green);
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+*:focus {
+  outline: none;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+html {
+  line-height: 1.15;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+nav,
+main,
+aside,
+section,
+footer {
+  display: block;
+}
+
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Oxygen', sans-serif;
+  margin: .67rem 0;
+  color: var(--sea-green);
+}
+
+h1 {
+  width: 83px;
+  height: 125px;
+  background-size: cover;
+  margin: 1rem auto;
+}
+
+h1 span {
+  display: none;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+.row h2 {
+  display: inline-block;
+}
+
+b,
+strong,
+.bold {
+  font-weight: bolder;
+}
+
+a {
+  background-color: transparent;
+  position: relative;
+  color: var(--sea-green);
+  transition: var(--trans);
+  text-decoration: none;
+}
+
+a:focus,
+a:hover {
+  color: var(--blue-sapphire);
+}
+
+a:visited {
+  color: var(--dark-gray);
+}
+
+a:not(.btn)::before,
+a:not(.btn)::after {
+  position: absolute;
+  content: '';
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background: var(--sea-green);
+  transition: var(--trans);
+}
+
+a:not(.btn)::before {
+  left: 50%;
+}
+
+a:not(.btn)::after {
+  right: 50%;
+}
+
+a:not(.btn):hover::before,
+a:not(.btn):hover::after {
+  width: 50%;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+  font-family: 'Raleway', sans-serif;
+}
+
+button,
+.btn {
+  font-family: 'Oxygen', sans-serif;
+}
