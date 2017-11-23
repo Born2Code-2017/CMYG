@@ -1,11 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { MenuComponent } from './menu/menu.component';
+import { PasswordLostComponent } from './password-lost/password-lost.component';
+import { ManagerDBModule } from './shared/_services/dbManager.service';
+import { AuthGuard } from './shared/_services/auth.service';
+import { external_routing } from './app.router';
 
 
 @NgModule({
@@ -13,12 +18,17 @@ import { MenuComponent } from './menu/menu.component';
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    MenuComponent
+    PasswordLostComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
+    FormsModule,
+    external_routing
   ],
-  providers: [],
+  providers: [ManagerDBModule, AuthGuard],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+
+export class AppModule {
+}

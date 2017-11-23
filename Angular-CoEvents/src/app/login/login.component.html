@@ -1,3 +1,59 @@
-<p>
-  login works!
-</p>
+<div id="login">
+  <div id="login-form">
+    <header>
+      <h1><span>CoEvents</span></h1>
+    </header>
+    <main>
+      <form id="form" name="login-form" method="post" novalidate>
+        <div class="form-group">
+          <input
+            id="username"
+            type="text"
+            name="username"
+            (focus)="lblUser = 1"
+            (blur)="labelMove()"
+            (keypress)="error_label_user = 0;"
+            [ngClass]="{'error': error_label_user === 1}"
+            [(ngModel)]="username"
+            required>
+          <label for="username"
+                 [ngClass]="{'is-active': lblUser === 1}">
+            Username or Email
+          </label>
+        </div>
+        <div class="form-group">
+          <input
+            id="password"
+            type="password"
+            name="password"
+            (focus)="lblPass = 1"
+            (blur)="labelMove()"
+            (keypress)="error_label_pass = 0;"
+            [ngClass]="{'error': error_label_pass === 1}"
+            [(ngModel)]="password"
+            required>
+          <label for="password"
+                 [ngClass]="{'is-active': lblPass === 1}">Password</label>
+        </div>
+        <div class="form-group tl">
+          <input
+            type="checkbox"
+            name="remember"
+            id="remember"
+            [(ngModel)]="checkbox">
+          <label for="remember" class="login-check">Remember Me</label>
+        </div>
+        <div class="form-group">
+          <button type="submit" (click)="doLogin()">Sign In</button>
+        </div>
+        <div class="form-group tc">
+          <p id="login-error">{{wrongCredentials}}</p>
+          <a routerLink="/password-lost">Forgot your password?</a>
+        </div>
+      </form>
+    </main>
+    <footer class="tc">
+      CoEvents by CMYG <i class="fa fa-fw fa-heart" aria-hidden="true"></i>
+    </footer>
+  </div>
+</div>

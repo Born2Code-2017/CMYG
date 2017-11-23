@@ -28,4 +28,10 @@ export class ManagerDBModule {
     const url = this.apiUrl + 'tags.json';
     return this.http.get<TagsInterface>(url);
   }
+
+  isUserLogged() {
+    if (sessionStorage.getItem('loggedUser') || localStorage.getItem('loggedUser')) {
+      return true;
+    }
+  }
 }

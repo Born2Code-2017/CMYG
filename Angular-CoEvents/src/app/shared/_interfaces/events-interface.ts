@@ -1,4 +1,4 @@
-import { Event } from '../_modules/events.module';
+import { Event } from '../_models/events.model';
 
 export interface EventsInterface {
   events: Event[];
