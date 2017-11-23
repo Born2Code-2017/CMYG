@@ -40,7 +40,3 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-
-# Added by Guido
-/src/assets/json_base_firebase
-/src/assets/plannings

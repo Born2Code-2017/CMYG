@@ -7,6 +7,7 @@ import { ManagerDBModule } from '../shared/_services/dbManager.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
 
   private users;
@@ -34,7 +35,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.managerDB.getUsers().subscribe(
       arg => this.users = arg,
-      err => console.log('Error downloading from Firebase')
+      err => console.log('Error downloading users from Firebase')
     );
   }
 
