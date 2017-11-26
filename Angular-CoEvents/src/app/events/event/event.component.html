@@ -1,0 +1,23 @@
+<div class="card is-3" data-tags="party">
+  <div class="card-header">
+    <img src="../../.{{event.imgPath}}" style="max-width: 100%;">
+  </div>
+  <div class="card-btn">
+    <a class="btn" routerLink="event/{{event.url}}">Discover</a>
+  </div>
+  <div class="card-content">
+    <p class="bold">
+      <i class="fa fa-fw fa-lg fa-calendar-o" aria-hidden="true"></i>
+      {{event.name}}
+    </p>
+    <p>
+      <i class="fa fa-fw fa-lg fa-clock-o" aria-hidden="true"></i>
+      {{eventDate | date:'dd/M/y'}} {{event.dateStart}} {{event.dateEnd | date: 'dd/M/y'}} | {{event.timeStart}} - {{event.timeEnd}}
+    </p>
+    <p>
+      <i class="fa fa-fw fa-lg fa-map-marker" aria-hidden="true"></i>
+      {{event.location}}
+    </p>
+    <p class="category">#{{event.tags}}</p>
+  </div>
+</div>

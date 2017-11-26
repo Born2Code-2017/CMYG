@@ -1,0 +1,64 @@
+#calendar {
+  position: fixed;
+  width: calc(100% - 250px);
+  top: 0;
+  right: 0;
+  height: 121px;
+}
+
+.calendar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.calendar .calendar-days {
+  position: relative;
+  float: left;
+  display: inline-block;
+  padding: .625rem;
+  margin: 0;
+  border-right: 1px solid var(--sea-green);
+  border-bottom: 1px solid var(--sea-green);
+  height: 100%;
+  width: calc(100% / 7);
+}
+
+.calendar .calendar-days:last-of-type {
+  border-right: 0;
+}
+
+.calendar .calendar-days .calendar-days__number,
+.calendar .calendar-days .calendar-days__dayname {
+  position: absolute;
+  right: .625rem;
+  color: var(--sea-green);
+}
+
+.calendar .calendar-days .calendar-days__number {
+  font-size: 1.5rem;
+}
+
+.calendar .calendar-days .calendar-days__dayname {
+  top: 2.25rem;
+}
+
+.calendar .calendar-days .category {
+  position: relative;
+  float: left;
+  clear: both;
+  margin: 2px 0;
+  padding: .315rem;
+  font-size: .815rem;
+  background: var(--sea-green);
+  color: var(--dirty-white);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: var(--trans);
+}
+
+.calendar .calendar-days .category:hover,
+.calendar .calendar-days .category.active {
+  background: var(--dark-gray);
+}
