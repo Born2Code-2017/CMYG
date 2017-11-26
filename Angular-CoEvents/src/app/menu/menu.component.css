@@ -1,0 +1,102 @@
+#menu {
+  position: fixed;
+  width: 250px;
+  height: 100%;
+  background: var(--dark-gray);
+  margin: 0;
+}
+
+#menu a {
+  color: var(--dirty-white);
+}
+
+#menu a:hover {
+  color: var(--sea-green);
+}
+
+#menu .menu-logo {
+  position: relative;
+  width: 100%;
+  height: 120px;
+  background: var(--dirty-white);
+  padding: 1rem 0;
+}
+
+#menu .menu-logo h1 {
+  margin: 0 auto;
+  width: 59px;
+  height: 88px;
+}
+
+#loggedUser p{
+  color: #fff;
+  margin-top: 0;
+}
+
+#menu .menu-nav {
+  height: calc(100% - 120px);
+  padding: 2rem 1.5rem;
+  position: relative;
+}
+
+#menu .menu-nav .fa-ul {
+  margin: 0;
+}
+
+#menu .menu-nav .fa-ul .nav-mv {
+  padding: .625rem 0;
+  color: var(--dirty-white);
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: var(--trans);
+}
+
+#menu .menu-nav .fa-ul .nav-mv:hover {
+  color: var(--sea-green);
+}
+
+#menu .menu-nav .fa-ul .nav-mv i {
+  margin-right: .625rem;
+  color: var(--dirty-white);
+}
+
+#menu .menu-nav .fa-ul .nav-mv .nav-sm {
+  margin-left: 1.25rem;
+  max-height: 0;
+  transition: var(--trans);
+  overflow: hidden;
+}
+
+#menu .menu-nav .fa-ul .nav-mv.active .nav-sm {
+  max-height: 400px;
+  padding-top: .625rem;
+}
+
+#menu .menu-nav .fa-ul .nav-mv .nav-sm .nav-sm_smv {
+  padding: .315rem 0;
+}
+
+#menu .menu-nav .menu-action {
+  position: absolute;
+  width: calc(100% - 3rem);
+  bottom: 2rem;
+}
+
+#menu .menu-nav .menu-action i {
+  color: var(--dirty-white);
+  cursor: pointer;
+  transition: var(--trans);
+}
+
+#menu .menu-nav .menu-action i:hover {
+  color: var(--sea-green);
+}
+
+#menu .menu-nav .menu-action i.fa-sign-out {
+  right: 0;
+  position: absolute;
+}
+
+.hidden {
+  display: none;
+}

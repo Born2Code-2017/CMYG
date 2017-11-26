@@ -1,10 +1,11 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PasswordLostComponent } from './password-lost/password-lost.component';
 import { AuthGuard } from './shared/_services/auth.service';
+import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const appRoutes: Routes = [
   {
@@ -24,7 +25,11 @@ const appRoutes: Routes = [
   {
     path: 'password-lost',
     component: PasswordLostComponent
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent
   }
 ];
 
-export const external_routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
+export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);

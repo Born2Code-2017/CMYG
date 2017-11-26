@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ManagerDBModule } from '../shared/_services/dbManager.service';
+import { Component, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,9 +7,12 @@ import { ManagerDBModule } from '../shared/_services/dbManager.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() {
-  }
+  private date = new Date();
+  @Output() today = this.date.getFullYear() +
+    '-' + (this.date.getMonth() + 1) +
+    '-' + this.date.getDate();
 
-  ngOnInit() {
-  }
+  constructor() { }
+
+  ngOnInit() { }
 }
