@@ -2,15 +2,14 @@
 <app-calendar [howMuchDays]="7"></app-calendar>
 <main id="events">
   <div class="row brb">
-    <h2>Today's Events</h2>
+    <h2>{{todayEvents}}</h2>
     <div id="category">
       <ul class="category">
         <span class="tc">Category
           <i class="fa fa-angle-down"
              aria-hidden="true"></i>
         </span>
-        <li class="category-name"
-            data-category="all">All</li>
+        <li class="category-name">All</li>
       </ul>
     </div>
   </div>

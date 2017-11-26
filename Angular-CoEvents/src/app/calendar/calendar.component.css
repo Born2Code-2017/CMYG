@@ -23,6 +23,7 @@
   border-bottom: 1px solid var(--sea-green);
   height: 100%;
   width: calc(100% / 7);
+  cursor: pointer;
 }
 
 .calendar .calendar-days:last-of-type {
@@ -48,9 +49,9 @@
   position: relative;
   float: left;
   clear: both;
-  margin: 2px 0;
+  margin: .315rem 0;
   padding: .315rem;
-  font-size: .815rem;
+  font-size: .625rem;
   background: var(--sea-green);
   color: var(--dirty-white);
   border-radius: 10px;
@@ -60,5 +61,5 @@
 
 .calendar .calendar-days .category:hover,
 .calendar .calendar-days .category.active {
-  background: var(--dark-gray);
+  background: var(--dark-gray) !important;
 }

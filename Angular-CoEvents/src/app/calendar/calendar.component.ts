@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
+import { EventsHandler } from '../shared/_services/eventsHandler.service';
+import { ManagerDBModule } from '../shared/_services/dbManager.service';
 
 @Component({
   selector: 'app-calendar',
@@ -8,20 +10,26 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CalendarComponent implements OnInit {
 
   @Input() howMuchDays: number;
-
   private arrayCalendar: object[];
-  private numberDay: number;
-  private labelDay: string;
+  private tags;
+  private tagsColor;
 
-  constructor() {
+  constructor(private eventsHandler: EventsHandler,
+              private managerDB: ManagerDBModule) {
     this.arrayCalendar = [];
+    this.tags = [];
+    this.tagsColor = [];
   }
 
   ngOnInit() {
-    this.displayCalendar();
+    this.eventsHandler.tags.subscribe(tags => {
+      this.displayCalendar(tags);
+    });
+    this.managerDB.getTags().subscribe(colors => this.tagsColor = colors);
+    this.eventsHandler.pushCalendar(this.arrayCalendar);
   }
 
-  displayCalendar() {
+  displayCalendar(tags) {
     const MILLIS_IN_DAY = 1000 * 60 * 60 * 24,
           day           = new Date(),
           week          = ['sun', 'mon', 'tue', 'wen', 'thu', 'fry', 'sat'],
@@ -29,20 +37,48 @@ export class CalendarComponent implements OnInit {
           todayN        = day.getTime();
 
     for (let i = 0; i < this.howMuchDays; i++) {
-      const this_week = ((todayD + i) % 7),
-            dayMore   = new Date(todayN + MILLIS_IN_DAY * i).getUTCDate();
+      const this_week  = ((todayD + i) % 7),
+            newDate    = new Date(todayN + MILLIS_IN_DAY * i),
+            nDay       = newDate.getUTCDate(),
+            month      = newDate.getMonth() + 1,
+            year       = newDate.getFullYear(),
+            actualDate = year + '-' + month + '-' + nDay;
 
-      this.numberDay = dayMore;
-      this.labelDay = week[this_week];
+      for (const t of tags) {
+        const start    = t.dateStart.split('-', 3),
+              end      = t.dateEnd.split('-', 3),
+              newStart = parseInt(start[2], 10),
+              newEnd   = parseInt(end[2], 10);
+
+        if (t.dateStart === actualDate || t.dateEnd === actualDate || (nDay > newStart && nDay < newEnd)) {
+          for (const c of this.tagsColor) {
+            if (c.name === t.tags) {
+              const tmpTag = {
+                tags: t.tags,
+                color: c.color
+              };
+              this.tags.push(tmpTag);
+            }
+          }
+        }
+      }
 
       const objDate = {
-        number: this.numberDay,
-        day: this.labelDay
+        day: nDay,
+        month: month,
+        year: year,
+        lblDay: week[this_week],
+        tags: this.tags
       };
 
       this.arrayCalendar.push(objDate);
+      this.tags = [];
     }
     console.log(this.arrayCalendar);
+  }
+
+  pushDay(day) {
+    this.eventsHandler.pushDay(day);
   }
 
 }

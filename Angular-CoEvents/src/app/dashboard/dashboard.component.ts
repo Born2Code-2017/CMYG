@@ -1,4 +1,5 @@
 import { Component, OnInit, Output } from '@angular/core';
+import { EventsHandler } from '../shared/_services/eventsHandler.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,7 +13,16 @@ export class DashboardComponent implements OnInit {
     '-' + (this.date.getMonth() + 1) +
     '-' + this.date.getDate();
 
-  constructor() { }
+  todayEvents: string;
 
-  ngOnInit() { }
+  constructor(private eventsHandler: EventsHandler) {
+    this.todayEvents = 'Today\'s Events';
+  }
+
+  ngOnInit() {
+    this.eventsHandler.day.subscribe(date => {
+      const d = date.split('-', 3);
+      this.todayEvents = d[2] + '/' + d[1] + ' events';
+    });
+  }
 }
