@@ -4,12 +4,13 @@
   <div class="row brb">
     <h2>{{todayEvents}}</h2>
     <div id="category">
-      <ul class="category">
+      <ul class="category" appCategory>
         <span class="tc">Category
           <i class="fa fa-angle-down"
              aria-hidden="true"></i>
         </span>
-        <li class="category-name">All</li>
+        <li class="category-name" (click)="clickedTag('all')">All</li>
+        <li class="category-name" *ngFor="let t of tagsOfToday" (click)="clickedTag(t)">#{{t}}</li>
       </ul>
     </div>
   </div>

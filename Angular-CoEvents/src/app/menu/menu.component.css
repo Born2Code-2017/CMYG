@@ -1,3 +1,10 @@
+:host{
+  z-index: 5;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 #menu {
   position: fixed;
   width: 250px;
@@ -28,7 +35,7 @@
   height: 88px;
 }
 
-#loggedUser p{
+#loggedUser p {
   color: #fff;
   margin-top: 0;
 }
@@ -37,6 +44,7 @@
   height: calc(100% - 120px);
   padding: 2rem 1.5rem;
   position: relative;
+  transition: var(--trans);
 }
 
 #menu .menu-nav .fa-ul {
@@ -97,6 +105,69 @@
   position: absolute;
 }
 
-.hidden {
+.hidden,
+.menu-hamb{
   display: none;
+}
+
+@media only screen and (max-width: 767px) {
+  #menu {
+    width: 100%;
+    max-height: 50px;
+    border-bottom: 1px solid var(--sea-green);
+  }
+
+  #menu .menu-logo {
+    height: 100%;
+    padding: 0;
+  }
+
+  #menu .menu-logo h1 {
+    background-image: url('../../assets/img/logo-small.png');
+    margin: .5rem 0 0 1rem;
+    height: 30px;
+    width: 145px;
+    top: 50%;
+    position: absolute;
+  }
+
+  #menu .menu-nav .fa-ul .nav-mv{
+    font-size: 1.75rem;
+  }
+
+  .menu-hamb {
+    display: inline-block;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .menu-hamb .fa {
+    font-size: 1.5rem;
+    color: var(--sea-green);
+  }
+
+  .menu-nav {
+    height: calc(100vh - 48px) !important;
+    overflow: hidden;
+    background: var(--dark-gray-o);
+    padding: 1.5rem !important;
+    right: -100%;
+    font-size: 1.75rem;
+  }
+
+  .menu-nav.opened{
+    right: 0;
+  }
+
+  .fa-bell-o{
+    display: none;
+  }
+
+  .fa-sign-out{
+    font-size: 3rem;
+    bottom: 0;
+  }
 }

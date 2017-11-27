@@ -1,11 +1,11 @@
 import { Directive, HostBinding, HostListener } from '@angular/core';
 
 @Directive({
-  selector: '[appMenu]'
+  selector: '[appCategory]'
 })
 
-export class MenuDirective {
-  @HostBinding('class.active') isActive = false;
+export class CategoryDirective {
+  @HostBinding('class.opened') isActive = false;
 
   @HostListener('click')
   toggleOpen() {

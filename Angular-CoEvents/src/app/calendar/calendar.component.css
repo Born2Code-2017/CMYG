@@ -1,3 +1,4 @@
+:host,
 #calendar {
   position: fixed;
   width: calc(100% - 250px);
@@ -45,21 +46,76 @@
   top: 2.25rem;
 }
 
+.category-wrapper{
+  position: absolute;
+  bottom: .625rem;
+  left: .625rem;
+}
+
 .calendar .calendar-days .category {
   position: relative;
   float: left;
   clear: both;
-  margin: .315rem 0;
+  margin: .125rem 0;
   padding: .315rem;
   font-size: .625rem;
   background: var(--sea-green);
   color: var(--dirty-white);
   border-radius: 10px;
-  cursor: pointer;
   transition: var(--trans);
 }
 
-.calendar .calendar-days .category:hover,
-.calendar .calendar-days .category.active {
-  background: var(--dark-gray) !important;
+@media only screen and (max-width: 767px) {
+  :host,
+  #calendar {
+    width: 100%;
+    height: 85px;
+    top: 50px;
+    z-index: 4;
+  }
+
+  .calendar{
+    overflow: hidden;
+    box-shadow: 0 5px 12px var(--light-gray);
+  }
+
+  .calendar .calendar-days{
+    width: 100%;
+    border-right: 0;
+    padding: 1rem 1.5rem;
+    background: var(--dirty-white);
+  }
+
+  .calendar .calendar-days .calendar-days__number,
+  .calendar .calendar-days .calendar-days__dayname {
+    position: absolute;
+    color: var(--sea-green);
+    right: 0;
+    left: 3rem;
+    top: 1rem;
+  }
+
+  .calendar .calendar-days .calendar-days__number {
+    font-size: 2rem;
+  }
+
+  .calendar .calendar-days .calendar-days__dayname {
+    top: 2.8rem;
+    font-size: 1.5rem;
+  }
+
+  .category-wrapper{
+    right: 2rem;
+    bottom: 0;
+    top: 1rem;
+  }
+
+  .calendar .calendar-days .category {
+    position: relative;
+    float: right;
+    clear: both;
+    margin: 2px 1rem;
+    padding: .315rem;
+    font-size: .725rem;
+  }
 }

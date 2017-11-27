@@ -18,6 +18,7 @@ import { EventsComponent } from './events/events.component';
 import { EventComponent } from './events/event/event.component';
 import { ProfileComponent } from './profile/profile.component';
 import { routing } from './app.router';
+import { CategoryDirective } from './dashboard/category.directive';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { routing } from './app.router';
     CalendarComponent,
     EventsComponent,
     EventComponent,
-    MenuDirective
+    MenuDirective,
+    CategoryDirective
   ],
   imports: [
     BrowserModule,

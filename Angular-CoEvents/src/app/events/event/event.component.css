@@ -1,5 +1,5 @@
 :host {
-  flex: 0 0 calc(33.33% - 1.5rem);
+  flex: 0 0 calc(100% - 1.5rem);
   margin: .75rem;
   box-shadow: 0 5px 12px var(--light-gray-o);
   min-height: 250px;
@@ -46,15 +46,15 @@ p.category {
   cursor: default;
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (min-width: 448px) {
   :host {
-    flex: 0 0 calc(100% - 1.5rem);
+    flex: 0 0 calc(50% - 1.5rem);
   }
 }
 
-@media only screen and (min-width: 768px) and (max-width: 1023px) {
+@media only screen and (min-width: 1023px) {
   :host {
-    flex: 0 0 calc(50% - 1.5rem);
+    flex: 0 0 calc(33.33% - 1.5rem);
     min-height: 250px;
   }
 }

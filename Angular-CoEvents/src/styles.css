@@ -1,6 +1,7 @@
 :root {
   font-size: 16px;
   --dark-gray: #3b4446;
+  --dark-gray-o: rgba(59, 68, 70, .9);
   --light-gray: #7b868a;
   --light-gray-o: rgba(175, 175, 175, .8);
   --blue-sapphire: #166a8f;
@@ -42,7 +43,6 @@
 :-ms-input-placeholder {
   color: var(--sea-green);
 }
-
 
 * {
   box-sizing: border-box;
@@ -349,4 +349,16 @@ button:hover::after {
   color: var(--red);
   font-weight: 700;
   margin: .625rem;
+}
+
+@media only screen and (max-width: 767px) {
+  :root {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 576px){
+  h2{
+    font-size: 1.5rem;
+  }
 }

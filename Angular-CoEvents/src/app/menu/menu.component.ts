@@ -9,8 +9,11 @@ import { Router } from '@angular/router';
 export class MenuComponent implements OnInit {
 
   private loggedUser: string;
+  private hambClicked: boolean;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+    this.hambClicked = false;
+  }
 
   ngOnInit() {
     if (sessionStorage.getItem('loggedUser')) {
@@ -20,6 +23,10 @@ export class MenuComponent implements OnInit {
       const JSONUser = JSON.parse(localStorage.getItem('loggedUser'));
       this.loggedUser = 'Welcome ' + JSONUser.username;
     }
+  }
+
+  openMenuMobile() {
+    !this.hambClicked ? this.hambClicked = true : this.hambClicked = false;
   }
 
   doLogOut() {

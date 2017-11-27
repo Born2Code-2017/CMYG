@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { EventsHandler } from '../shared/_services/eventsHandler.service';
 import { ManagerDBModule } from '../shared/_services/dbManager.service';
 
@@ -7,7 +7,7 @@ import { ManagerDBModule } from '../shared/_services/dbManager.service';
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css']
 })
-export class CalendarComponent implements OnInit {
+export class CalendarComponent implements OnInit, OnChanges {
 
   @Input() howMuchDays: number;
   private arrayCalendar: object[];
@@ -21,15 +21,19 @@ export class CalendarComponent implements OnInit {
     this.tagsColor = [];
   }
 
+  ngOnChanges() {
+    this.eventsHandler.pushCalendar(this.arrayCalendar);
+  }
+
   ngOnInit() {
     this.eventsHandler.getTags().subscribe(tags => {
       this.displayCalendar(tags);
     });
     this.managerDB.getTags().subscribe(colors => this.tagsColor = colors);
-    this.eventsHandler.pushCalendar(this.arrayCalendar);
   }
 
   displayCalendar(tags) {
+    this.arrayCalendar = [];
     const MILLIS_IN_DAY = 1000 * 60 * 60 * 24,
           day           = new Date(),
           week          = ['sun', 'mon', 'tue', 'wen', 'thu', 'fry', 'sat'],
@@ -50,7 +54,7 @@ export class CalendarComponent implements OnInit {
               newStart = parseInt(start[2], 10),
               newEnd   = parseInt(end[2], 10);
 
-        if (t.dateStart === actualDate || t.dateEnd === actualDate || (nDay > newStart && nDay < newEnd)) {
+        if (t.dateStart === actualDate || t.dateEnd === actualDate || (nDay >= newStart && nDay <= newEnd)) {
           for (const c of this.tagsColor) {
             if (c.name === t.tags) {
               const tmpTag = {
@@ -74,7 +78,7 @@ export class CalendarComponent implements OnInit {
       this.arrayCalendar.push(objDate);
       this.tags = [];
     }
-    console.log(this.arrayCalendar);
+    // console.log(this.arrayCalendar);
   }
 
   pushDay(day) {

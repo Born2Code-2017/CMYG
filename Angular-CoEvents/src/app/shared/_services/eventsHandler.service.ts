@@ -8,6 +8,7 @@ export class EventsHandler {
   calendar: Subject<object[]> = new Subject();
   day: Subject<string> = new Subject();
   tags: Subject<object[]> = new Subject();
+  dashTagFilter: Subject<string> = new Subject();
 
   constructor() { }
 
@@ -23,8 +24,12 @@ export class EventsHandler {
     this.tags.next(tags);
   }
 
-  getCalendar(): Observable<object[]> {
-    return this.calendar.asObservable();
+  pushDashTagFilter(tag) {
+    this.dashTagFilter.next(tag);
+  }
+
+  getDashTagFilter(): Observable<string> {
+    return this.dashTagFilter.asObservable();
   }
 
   getDay(): Observable<string> {
