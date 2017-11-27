@@ -3,7 +3,7 @@
     <li class="calendar-days" *ngFor="let d of arrayCalendar" (click)="pushDay(d.year+'-'+d.month+'-'+d.day)">
       <span class="calendar-days__number">{{d.day}}</span>
       <span class="calendar-days__dayname">{{d.lblDay}}</span>
-      <span class="category" *ngFor="let t of d.tags" [ngStyle]="{'background-color': t.color}">{{t.tags}}</span>
+      <span class="category" *ngFor="let t of d.tags" [ngStyle]="{'background-color': t.color}">#{{t.tags}}</span>
     </li>
   </ul>
 </header>

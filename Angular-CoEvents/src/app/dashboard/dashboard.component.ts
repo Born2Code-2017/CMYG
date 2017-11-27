@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.eventsHandler.day.subscribe(date => {
+    this.eventsHandler.getDay().subscribe(date => {
       const d = date.split('-', 3);
       this.todayEvents = d[2] + '/' + d[1] + ' events';
     });

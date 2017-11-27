@@ -1,23 +1,37 @@
 import { EventEmitter, Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class EventsHandler {
 
-  calendar: EventEmitter<object[]> = new EventEmitter();
-  day: EventEmitter<number> = new EventEmitter();
-  tags: EventEmitter<object[]> = new EventEmitter();
+  calendar: Subject<object[]> = new Subject();
+  day: Subject<string> = new Subject();
+  tags: Subject<object[]> = new Subject();
 
   constructor() { }
 
   pushCalendar(cal) {
-    this.calendar.emit(cal);
+    this.calendar.next(cal);
   }
 
   pushDay(day) {
-    this.day.emit(day);
+    this.day.next(day);
   }
 
   pushTags(tags) {
-    this.tags.emit(tags);
+    this.tags.next(tags);
+  }
+
+  getCalendar(): Observable<object[]> {
+    return this.calendar.asObservable();
+  }
+
+  getDay(): Observable<string> {
+    return this.day.asObservable();
+  }
+
+  getTags(): Observable<object[]> {
+    return this.tags.asObservable();
   }
 }

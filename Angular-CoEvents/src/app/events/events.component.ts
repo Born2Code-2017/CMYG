@@ -35,7 +35,7 @@ export class EventsComponent implements OnInit, OnChanges {
   }
 
   getDay() {
-    this.eventsHandler.day.subscribe(date => {
+    this.eventsHandler.getDay().subscribe(date => {
       this.loadEvents(date, this.listEvents);
     });
   }

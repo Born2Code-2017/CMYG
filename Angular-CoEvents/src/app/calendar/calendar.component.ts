@@ -22,7 +22,7 @@ export class CalendarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.eventsHandler.tags.subscribe(tags => {
+    this.eventsHandler.getTags().subscribe(tags => {
       this.displayCalendar(tags);
     });
     this.managerDB.getTags().subscribe(colors => this.tagsColor = colors);
