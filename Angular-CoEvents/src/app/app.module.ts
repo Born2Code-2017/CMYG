@@ -19,6 +19,7 @@ import { EventComponent } from './events/event/event.component';
 import { ProfileComponent } from './profile/profile.component';
 import { routing } from './app.router';
 import { CategoryDirective } from './dashboard/category.directive';
+import { TimePipe } from './shared/_pipe/time.pipe';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { CategoryDirective } from './dashboard/category.directive';
     EventsComponent,
     EventComponent,
     MenuDirective,
-    CategoryDirective
+    CategoryDirective,
+    TimePipe
   ],
   imports: [
     BrowserModule,

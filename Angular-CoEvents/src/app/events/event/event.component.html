@@ -11,7 +11,7 @@
   </p>
   <p>
     <i class="fa fa-fw fa-lg fa-clock-o" aria-hidden="true"></i>
-    {{eventDate2}} {{eventDate | date:'dd/M/y'}} | {{event.timeStart}} - {{event.timeEnd}}
+    {{eventDate2}} {{eventDate | date:'dd/M/y'}} / {{event.timeStart | time}} - {{event.timeEnd | time}}
   </p>
   <p>
     <i class="fa fa-fw fa-lg fa-map-marker" aria-hidden="true"></i>
