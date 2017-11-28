@@ -8,10 +8,10 @@ import { EventsHandler } from '../shared/_services/eventsHandler.service';
 })
 export class DashboardComponent implements OnInit {
 
-  private tagsOfToday;
-  private tags;
+  tagsOfToday;
+  tags;
 
-  private date = new Date();
+  date = new Date();
   @Output() today = this.date.getFullYear() +
     '-' + (this.date.getMonth() + 1) +
     '-' + this.date.getUTCDate();

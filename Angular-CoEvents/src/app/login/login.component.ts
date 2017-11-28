@@ -10,11 +10,11 @@ import { ManagerDBModule } from '../shared/_services/dbManager.service';
 
 export class LoginComponent implements OnInit {
 
-  private users;
-  private username: string;
-  private password: string;
-  private checkbox: boolean;
-  private wrongCredentials: string;
+  users;
+  username: string;
+  password: string;
+  checkbox: boolean;
+  wrongCredentials: string;
   error_label_user: number;
   error_label_pass: number;
   lblUser: number;

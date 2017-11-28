@@ -10,9 +10,9 @@ import { ManagerDBModule } from '../shared/_services/dbManager.service';
 export class CalendarComponent implements OnInit, OnChanges {
 
   @Input() howMuchDays: number;
-  private arrayCalendar: object[];
-  private tags;
-  private tagsColor;
+  arrayCalendar: object[];
+  tags;
+  tagsColor;
 
   constructor(private eventsHandler: EventsHandler,
               private managerDB: ManagerDBModule) {

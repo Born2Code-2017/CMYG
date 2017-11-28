@@ -10,10 +10,10 @@ import { EventsHandler } from '../shared/_services/eventsHandler.service';
 
 export class EventsComponent implements OnInit {
 
-  private listEvents;
-  private eventShowed;
-  private tagsEvents: object[];
-  private tagsList;
+  listEvents;
+  eventShowed;
+  tagsEvents: object[];
+  tagsList;
 
   @Input() today;
 

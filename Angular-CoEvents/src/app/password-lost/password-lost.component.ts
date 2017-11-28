@@ -10,9 +10,9 @@ import { ManagerDBModule } from '../shared/_services/dbManager.service';
 
 export class PasswordLostComponent implements OnInit {
 
-  private users;
-  private email: string;
-  private wrongUser: string;
+  users;
+  email: string;
+  wrongUser: string;
   error_label_user: number;
   lblUser: number;
 

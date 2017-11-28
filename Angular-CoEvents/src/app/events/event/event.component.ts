@@ -9,8 +9,8 @@ import { Component, Input, OnInit } from '@angular/core';
 export class EventComponent implements OnInit {
 
   @Input() event;
-  private eventDate: string;
-  private eventDate2: string;
+  eventDate: string;
+  eventDate2: string;
 
   constructor() {
     this.eventDate = '';

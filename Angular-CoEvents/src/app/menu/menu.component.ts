@@ -8,8 +8,9 @@ import { Router } from '@angular/router';
 })
 export class MenuComponent implements OnInit {
 
-  private loggedUser: string;
-  private hambClicked: boolean;
+  loggedUser: string;
+  hambClicked: boolean;
+  isActive: number;
 
   constructor(private router: Router) {
     this.hambClicked = false;
