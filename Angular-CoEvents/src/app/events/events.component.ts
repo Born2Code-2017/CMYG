@@ -15,6 +15,8 @@ export class EventsComponent implements OnInit {
   tagsEvents: object[];
   tagsList;
 
+  private firstLoad: boolean;
+
   @Input() today;
 
   constructor(private managerDB: ManagerDBModule,
@@ -37,10 +39,12 @@ export class EventsComponent implements OnInit {
 
     this.getDay();
     this.getDashTagFromService(this.today);
+    this.firstLoad = true;
   }
 
   getDay() {
     this.eventsHandler.getDay().subscribe(date => {
+      this.firstLoad = false;
       this.onLoadEvents(date, this.listEvents, this.tagsList);
       this.getDashTagFromService(date);
     }, err => console.log('Something wrong in the subscribe of the getDay:', err.status));
@@ -98,17 +102,24 @@ export class EventsComponent implements OnInit {
     this.eventShowed = [];
     for (const event in events) {
       if (events.hasOwnProperty(event)) {
-        const eventStart      = events[event].dateStart.split('-', 3),
-              eventEnd        = events[event].dateEnd.split('-', 3),
-              splicedDate     = date.split('-', 3),
-              newStart        = parseInt(eventStart[2], 10),
-              newEnd          = parseInt(eventEnd[2], 10),
-              newDate         = parseInt(splicedDate[2], 10),
-              dataInizio      = events[event].dateStart === date,
-              dataFine        = events[event].dateEnd === date,
-              dataIsBetween   = newDate >= newStart && newDate <= newEnd,
-              dataStartMonths = newStart >= newDate || splicedDate[1] < eventEnd[1],
-              dateIsInRange   = dataInizio || dataFine || dataIsBetween;
+        const eventStart    = events[event].dateStart.split('-', 3),
+              eventEnd      = events[event].dateEnd.split('-', 3),
+              splicedDate   = date.split('-', 3),
+              newStart      = parseInt(eventStart[2], 10),
+              newEnd        = parseInt(eventEnd[2], 10),
+              newDate       = parseInt(splicedDate[2], 10),
+              dataInizio    = events[event].dateStart === date,
+              dataFine      = events[event].dateEnd === date,
+              dataIsBetween = newDate >= newStart && newDate <= newEnd,
+              dateIsInRange = dataInizio || dataFine || dataIsBetween;
+
+        let dataStartMonths = false;
+
+        if (this.firstLoad) {
+          dataStartMonths = newStart >= newDate || splicedDate[1] < eventEnd[1];
+        } else {
+          dataStartMonths = newStart >= newDate && splicedDate[1] < eventEnd[1];
+        }
 
         if (dateIsInRange || dataStartMonths) {
           if (tag === events[event].tags || tag === 'all') {

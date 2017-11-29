@@ -57,11 +57,13 @@ export class CalendarComponent implements OnInit, OnChanges {
         if (t.dateStart === actualDate || t.dateEnd === actualDate || (nDay >= newStart && nDay <= newEnd)) {
           for (const c of this.tagsColor) {
             if (c.name === t.tags) {
-              const tmpTag = {
-                tags: t.tags,
-                color: c.color
-              };
-              this.tags.push(tmpTag);
+              if (this.tags.map(arg => arg.tags).indexOf(t.tags) === -1) {
+                const tmpTag = {
+                  tags: t.tags,
+                  color: c.color
+                };
+                this.tags.push(tmpTag);
+              }
             }
           }
         }
@@ -78,7 +80,6 @@ export class CalendarComponent implements OnInit, OnChanges {
       this.arrayCalendar.push(objDate);
       this.tags = [];
     }
-    // console.log(this.arrayCalendar);
   }
 
   pushDay(day) {

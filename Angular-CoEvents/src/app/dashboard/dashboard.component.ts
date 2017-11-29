@@ -52,13 +52,15 @@ export class DashboardComponent implements OnInit {
               newDate     = parseInt(splicedDate[2], 10);
 
         if (date === t.dateStart || date === t.dateEnd || (newDate >= newStart && newDate <= newEnd)) {
-          this.tagsOfToday.push(t.tags);
+          if (this.tagsOfToday.indexOf(t.tags) === -1) {
+            this.tagsOfToday.push(t.tags);
+          }
         }
       }
     });
   }
 
-  clickedTag(tag){
+  clickedTag(tag) {
     this.eventsHandler.pushDashTagFilter(tag);
   }
 }

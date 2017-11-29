@@ -6,14 +6,14 @@ import { ManagerDBModule } from './dbManager.service';
 export class AuthGuard implements CanActivate {
 
   constructor(private router: Router,
-              private db: ManagerDBModule) {
+              private managerDB: ManagerDBModule) {
   }
 
   canActivate() {
-    if (this.db.isUserLogged()) {
+    if (this.managerDB.isUserLogged()) {
       return true;
     }
-    this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('/login').then();
     return false;
   }
 }
