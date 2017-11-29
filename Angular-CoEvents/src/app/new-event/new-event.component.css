@@ -1,0 +1,106 @@
+#newEvent {
+  position: absolute;
+  overflow-y: scroll;
+  width: calc(100% - 250px);
+  height: calc(100% - 121px);
+  top: 121px;
+  right: 0;
+  padding: 2rem;
+  margin: 0;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.row {
+  flex: 0 0 100%;
+  display: inherit;
+  flex-flow: inherit;
+  margin: .5rem 0;
+}
+
+.form-group,
+.form-group-2,
+.form-group-4 {
+  flex: 0 0 calc(100% - 1.5rem);
+  position: relative;
+  margin: .75rem;
+}
+
+.form-group-2 {
+  flex: 0 0 calc(50% - 1.5rem);
+}
+
+.form-group-4 {
+  flex: 0 0 calc(25% - 1.5rem);
+}
+
+.form-group-2 input,
+.form-group-2 select,
+.form-group-4 input {
+  color: var(--sea-green);
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid var(--sea-green);
+  background: transparent;
+  padding: .625rem;
+  margin: .315rem 0;
+}
+
+.form-group textarea {
+  color: var(--sea-green);
+  width: 100%;
+  border: 1px solid var(--sea-green);
+  padding: .625rem;
+  height: 200px;
+}
+
+label {
+  font-size: .725rem;
+  position: absolute;
+  bottom: .425rem;
+  left: .625rem;
+  transition: var(--trans);
+  color: var(--sea-green);
+}
+
+label.is-active {
+  bottom: 80%;
+  left: 0;
+}
+
+label.textarea {
+  position: relative;
+}
+
+.cancel {
+  border: 1px solid #f00;
+  color: #f00;
+}
+
+.cancel:hover {
+  color: var(--dirty-white);
+}
+
+.cancel::before,
+.cancel::after {
+  background: #f00;
+}
+
+@media only screen and (max-width: 767px) {
+  #newEvent {
+    width: 100%;
+    padding: 1rem;
+    top: 100px;
+    height: calc(100% - 75px);
+  }
+
+  .form-group,
+  .form-group-2,
+  .form-group-4 {
+    flex: 0 0 calc(100% - 1.5rem);
+  }
+}

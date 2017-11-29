@@ -6,6 +6,7 @@ import { PasswordLostComponent } from './password-lost/password-lost.component';
 import { AuthGuard } from './shared/_services/auth.service';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
+import { NewEventComponent } from './new-event/new-event.component';
 
 const appRoutes: Routes = [
   {
@@ -29,6 +30,10 @@ const appRoutes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent
+  },
+  {
+    path: 'new-event',
+    component: NewEventComponent
   }
 ];
 

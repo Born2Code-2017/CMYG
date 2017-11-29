@@ -20,6 +20,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { routing } from './app.router';
 import { CategoryDirective } from './dashboard/category.directive';
 import { TimePipe } from './shared/_pipe/time.pipe';
+import { NewEventComponent } from './new-event/new-event.component';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import { TimePipe } from './shared/_pipe/time.pipe';
     EventComponent,
     MenuDirective,
     CategoryDirective,
-    TimePipe
+    TimePipe,
+    NewEventComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,134 @@
+<app-menu></app-menu>
+<app-header [h2OfPage]="h2"></app-header>
+<div id="newEvent">
+  <form novalidate>
+    <div class="row">
+      <div class="form-group-2">
+        <label for="name"
+               [ngClass]="{'is-active': lblName}">
+          Event Title
+        </label>
+        <input type="text"
+               id="name"
+               name="name"
+               (focus)="lblName = true"
+               (blur)="labelMove()"
+               [(ngModel)]="eventName">
+      </div>
+      <div class="form-group-2">
+        <label for="location"
+               [ngClass]="{'is-active': lblLocation}">
+          Location
+        </label>
+        <input type="text"
+               id="location"
+               name="location"
+               (focus)="lblLocation = true"
+               (blur)="labelMove()"
+               [(ngModel)]="eventLocation">
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group-4">
+        <label for="dateStart"
+               [ngClass]="{'is-active': lblDateStart}">
+          Date Start
+        </label>
+        <input type="text"
+               id="dateStart"
+               name="dateStart"
+               (focus)="lblDateStart = true"
+               (blur)="labelMove()"
+               [(ngModel)]="eventDateStart">
+      </div>
+      <div class="form-group-4">
+        <label for="dateEnd"
+               [ngClass]="{'is-active': lblDateEnd}">
+          Date End
+        </label>
+        <input type="text"
+               id="dateEnd"
+               name="dateEnd"
+               (focus)="lblDateEnd = true"
+               (blur)="labelMove()"
+               [(ngModel)]="eventDateEnd">
+      </div>
+      <div class="form-group-4">
+        <label for="timeStart"
+               [ngClass]="{'is-active': lblTimeStart}">
+          Time Start
+        </label>
+        <input type="text"
+               id="timeStart"
+               name="timeStart"
+               (focus)="lblTimeStart = true"
+               (blur)="labelMove()"
+               [(ngModel)]="eventTimeStart">
+      </div>
+      <div class="form-group-4">
+        <label for="timeEnd"
+               [ngClass]="{'is-active': lblTimeEnd}">
+          Time End
+        </label>
+        <input type="text"
+               id="timeEnd"
+               name="timeEnd"
+               (focus)="lblTimeEnd = true"
+               (blur)="labelMove()"
+               [(ngModel)]="eventTimeEnd">
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group-2">
+        <label for="image"
+               [ngClass]="{'is-active': lblImage}">
+          Choose your Image
+        </label>
+        <select id="image"
+                name="eventImage"
+                (focus)="lblImage = true"
+                (blur)="labelMoveSelectImage()"
+                [(ngModel)]="selectedImage">
+          <option *ngFor="let image of arrayImages"
+                  [value]="image.path">
+            {{image.name}}
+          </option>
+        </select>
+      </div>
+      <div class="form-group-2">
+        <label for="tags"
+               [ngClass]="{'is-active': lblTag}">
+          Choose your Category
+        </label>
+        <select id="tags"
+                name="eventTag"
+                (focus)="lblTag = true"
+                (blur)="labelMoveSelectTag()"
+                [(ngModel)]="selectedTag">
+          <option *ngFor="let tag of arrayTags"
+                  [value]="tag.name">
+            {{tag.name}}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group">
+        <label for="description"
+               class="textarea">Insert the description of the event</label>
+        <textarea name="description"
+                  id="description"
+                  placeholder="Insert the description of the event"
+        [(ngModel)]="eventDescription"></textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group-2">
+        <button class="cancel">Cancel</button>
+      </div>
+      <div class="form-group-2">
+        <button (click)="sendEventToDB()">Publish</button>
+      </div>
+    </div>
+  </form>
+</div>
