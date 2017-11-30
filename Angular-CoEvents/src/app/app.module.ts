@@ -4,8 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 import { ManagerDBModule } from './shared/_services/dbManager.service';
-import { AuthGuard } from './shared/_services/auth.service';
 import { EventsHandler } from './shared/_services/eventsHandler.service';
+import { AuthGuard } from './shared/_services/auth.service';
+import { NewEventGuard } from './shared/_services/eventGuard.service';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -22,7 +23,7 @@ import { CategoryDirective } from './dashboard/category.directive';
 import { TimePipe } from './shared/_pipe/time.pipe';
 import { NewEventComponent } from './new-event/new-event.component';
 import { HeaderComponent } from './header/header.component';
-
+import { NgxMyDatePickerModule } from 'ngx-mydatepicker';
 
 @NgModule({
   declarations: [
@@ -45,12 +46,14 @@ import { HeaderComponent } from './header/header.component';
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    NgxMyDatePickerModule.forRoot(),
     routing
   ],
   providers: [
     ManagerDBModule,
+    EventsHandler,
     AuthGuard,
-    EventsHandler
+    NewEventGuard
   ],
   bootstrap: [AppComponent]
 })

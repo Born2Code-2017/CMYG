@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { ManagerDBModule } from '../shared/_services/dbManager.service';
 import { EventsHandler } from '../shared/_services/eventsHandler.service';
 
@@ -18,6 +18,7 @@ export class EventsComponent implements OnInit {
   private firstLoad: boolean;
 
   @Input() today;
+  @Output() userLogged;
 
   constructor(private managerDB: ManagerDBModule,
               private eventsHandler: EventsHandler) {
@@ -40,6 +41,7 @@ export class EventsComponent implements OnInit {
     this.getDay();
     this.getDashTagFromService(this.today);
     this.firstLoad = true;
+    this.eventsHandler.getUser().subscribe(user => this.userLogged = user);
   }
 
   getDay() {
@@ -67,7 +69,8 @@ export class EventsComponent implements OnInit {
           }
         }
 
-        if (events[event].dateStart >= date) {
+        if (events[event].dateStart.formatted >= date) {
+          events[event].id = event;
           this.eventShowed.push(events[event]);
         }
       }
@@ -78,12 +81,14 @@ export class EventsComponent implements OnInit {
     this.eventShowed = [];
     for (const event in events) {
       if (events.hasOwnProperty(event)) {
-        const start       = events[event].dateStart.split('-', 3),
-              end         = events[event].dateEnd.split('-', 3),
-              splicedDate = date.split('-', 3),
-              newStart    = parseInt(start[2], 10),
-              newEnd      = parseInt(end[2], 10),
-              newDate     = parseInt(splicedDate[2], 10);
+        const start           = events[event].dateStart.formatted.split('-', 3),
+              end             = events[event].dateEnd.formatted.split('-', 3),
+              unsplittedEnd   = events[event].dateEnd.formatted,
+              unsplittedStart = events[event].dateStart.formatted,
+              splicedDate     = date.split('-', 3),
+              newStart        = parseInt(start[2], 10),
+              newEnd          = parseInt(end[2], 10),
+              newDate         = parseInt(splicedDate[2], 10);
 
         for (const t of tags) {
           if (t.name === events[event].tags) {
@@ -91,7 +96,8 @@ export class EventsComponent implements OnInit {
           }
         }
 
-        if (events[event].dateStart === date || events[event].dateEnd === date || (newDate >= newStart && newDate <= newEnd)) {
+        if (unsplittedStart === date || unsplittedEnd === date || (newDate >= newStart && newDate <= newEnd)) {
+          events[event].id = event;
           this.eventShowed.push(events[event]);
         }
       }
@@ -102,14 +108,14 @@ export class EventsComponent implements OnInit {
     this.eventShowed = [];
     for (const event in events) {
       if (events.hasOwnProperty(event)) {
-        const eventStart    = events[event].dateStart.split('-', 3),
-              eventEnd      = events[event].dateEnd.split('-', 3),
+        const eventStart    = events[event].dateStart.formatted.split('-', 3),
+              eventEnd      = events[event].dateEnd.formatted.split('-', 3),
               splicedDate   = date.split('-', 3),
               newStart      = parseInt(eventStart[2], 10),
               newEnd        = parseInt(eventEnd[2], 10),
               newDate       = parseInt(splicedDate[2], 10),
-              dataInizio    = events[event].dateStart === date,
-              dataFine      = events[event].dateEnd === date,
+              dataInizio    = events[event].dateStart.formatted === date,
+              dataFine      = events[event].dateEnd.formatted === date,
               dataIsBetween = newDate >= newStart && newDate <= newEnd,
               dateIsInRange = dataInizio || dataFine || dataIsBetween;
 
@@ -123,6 +129,7 @@ export class EventsComponent implements OnInit {
 
         if (dateIsInRange || dataStartMonths) {
           if (tag === events[event].tags || tag === 'all') {
+            events[event].id = event;
             this.eventShowed.push(events[event]);
           }
         }
@@ -143,6 +150,6 @@ export class EventsComponent implements OnInit {
       }
     }
 
-    this.eventsHandler.pushTags(this.tagsEvents);
+    this.eventsHandler.setTags(this.tagsEvents);
   }
 }

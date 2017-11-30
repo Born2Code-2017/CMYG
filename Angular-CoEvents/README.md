@@ -11,3 +11,10 @@ From the browser, access to `localhost:4200`
 #### Warnings on development mode
 
 If you get some warnings during the `ng serve` compilation, don't bother at them and read [#3](https://github.com/Born2Code-2017/CMYG/issues/3)
+
+
+## Dependency
+
+#### ngx-datepicker
+
+In the project we're currently using the [ngx-datepicker](https://github.com/kekeh/ngx-mydatepicker) by kekeh

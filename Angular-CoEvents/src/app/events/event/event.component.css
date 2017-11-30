@@ -23,6 +23,7 @@
 }
 
 .card-content {
+  position: relative;
   padding: .625rem 1rem;
   flex: 0 0 100%;
   order: 3;
@@ -35,6 +36,32 @@
 
 .card-content > p i {
   margin-right: .125rem;
+}
+
+.card-content .fa-pencil,
+.card-content .fa-trash {
+  color: var(--blue-sapphire);
+  position: absolute;
+  right: 2.5rem;
+  bottom: 1.5rem;
+  cursor: pointer;
+  transition: var(--trans);
+  font-size: 1.2rem;
+}
+
+.card-content .fa-trash {
+  color: var(--dark-gray);
+  right: 1rem;
+}
+
+.card-content .fa-pencil:hover {
+  color: var(--sea-green);
+  font-size: 1.5rem;
+}
+
+.card-content .fa-trash:hover {
+  color: var(--red);
+  font-size: 1.5rem;
 }
 
 p.category {

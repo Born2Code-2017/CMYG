@@ -11,11 +11,19 @@
   </p>
   <p>
     <i class="fa fa-fw fa-lg fa-clock-o" aria-hidden="true"></i>
-    {{eventDate2}} {{eventDate | date:'dd/M/y'}} / {{event.timeStart | time}} - {{event.timeEnd | time}}
+    {{eventDate2}} {{eventDate | date:'dd/M/y'}} | {{event.timeStart | time}} - {{event.timeEnd | time}}
   </p>
   <p>
     <i class="fa fa-fw fa-lg fa-map-marker" aria-hidden="true"></i>
     {{event.location}}
   </p>
   <p class="category" [ngStyle]="{'background-color': event.colorTag}">#{{event.tags}}</p>
+  <i class="fa fa-pencil"
+     aria-hidden="true"
+     (click)="editEvent(event, event.url)"
+     *ngIf="event.owner === user"></i>
+  <i class="fa fa-trash"
+     aria-hidden="true"
+     (click)="deleteEvent(event.id)"
+     *ngIf="event.owner === user"></i>
 </div>

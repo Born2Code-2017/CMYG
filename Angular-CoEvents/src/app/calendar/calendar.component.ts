@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { EventsHandler } from '../shared/_services/eventsHandler.service';
 import { ManagerDBModule } from '../shared/_services/dbManager.service';
 
@@ -7,7 +7,7 @@ import { ManagerDBModule } from '../shared/_services/dbManager.service';
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css']
 })
-export class CalendarComponent implements OnInit, OnChanges {
+export class CalendarComponent implements OnInit {
 
   @Input() howMuchDays: number;
   arrayCalendar: object[];
@@ -19,10 +19,6 @@ export class CalendarComponent implements OnInit, OnChanges {
     this.arrayCalendar = [];
     this.tags = [];
     this.tagsColor = [];
-  }
-
-  ngOnChanges() {
-    this.eventsHandler.pushCalendar(this.arrayCalendar);
   }
 
   ngOnInit() {
@@ -49,12 +45,12 @@ export class CalendarComponent implements OnInit, OnChanges {
             actualDate = year + '-' + month + '-' + nDay;
 
       for (const t of tags) {
-        const start    = t.dateStart.split('-', 3),
-              end      = t.dateEnd.split('-', 3),
+        const start    = t.dateStart.formatted.split('-', 3),
+              end      = t.dateEnd.formatted.split('-', 3),
               newStart = parseInt(start[2], 10),
               newEnd   = parseInt(end[2], 10);
 
-        if (t.dateStart === actualDate || t.dateEnd === actualDate || (nDay >= newStart && nDay <= newEnd)) {
+        if (t.dateStart.formatted === actualDate || t.dateEnd.formatted === actualDate || (nDay >= newStart && nDay <= newEnd)) {
           for (const c of this.tagsColor) {
             if (c.name === t.tags) {
               if (this.tags.map(arg => arg.tags).indexOf(t.tags) === -1) {
@@ -82,8 +78,8 @@ export class CalendarComponent implements OnInit, OnChanges {
     }
   }
 
-  pushDay(day) {
-    this.eventsHandler.pushDay(day);
+  setDay(day) {
+    this.eventsHandler.setDay(day);
   }
 
 }

@@ -193,8 +193,8 @@ textarea {
   color: var(--sea-green);
 }
 
-button,
-.btn {
+.btn,
+button {
   font-family: 'Oxygen', sans-serif;
 }
 
@@ -243,7 +243,6 @@ button,
 input[type="checkbox"] {
   max-width: 20px;
   position: relative;
-  appearance: none;
   -moz-appearance: none;
   -webkit-appearance: none;
   border: 0;
@@ -262,7 +261,7 @@ input[type="checkbox"]::before {
 }
 
 input[type="checkbox"]::after {
-  font-family: 'FontAwesome';
+  font-family: 'FontAwesome', Arial, sans-serif;
   position: absolute;
   right: -.5rem;
   top: -.315rem;
@@ -357,8 +356,8 @@ button:hover::after {
   }
 }
 
-@media only screen and (max-width: 576px){
-  h2{
+@media only screen and (max-width: 576px) {
+  h2 {
     font-size: 1.5rem;
   }
 }

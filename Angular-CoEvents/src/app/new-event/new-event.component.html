@@ -1,7 +1,7 @@
 <app-menu></app-menu>
 <app-header [h2OfPage]="h2"></app-header>
-<div id="newEvent">
-  <form novalidate>
+<div id="newEvent" *ngIf="templateVisible">
+  <form novalidate #myForm="ngForm" name="myForm">
     <div class="row">
       <div class="form-group-2">
         <label for="name"
@@ -11,9 +11,12 @@
         <input type="text"
                id="name"
                name="name"
+               #Name="ngModel"
                (focus)="lblName = true"
-               (blur)="labelMove()"
-               [(ngModel)]="eventName">
+               (blur)="labelMove(); nameToUrl()"
+               [(ngModel)]="currentEvent.name"
+               [ngClass]="{'error': !Name.pristine && !Name.valid}"
+               required>
       </div>
       <div class="form-group-2">
         <label for="location"
@@ -23,59 +26,72 @@
         <input type="text"
                id="location"
                name="location"
+               #Loc="ngModel"
                (focus)="lblLocation = true"
                (blur)="labelMove()"
-               [(ngModel)]="eventLocation">
+               [(ngModel)]="currentEvent.location"
+               [ngClass]="{'error': !Loc.valid && !Loc.pristine}"
+               required>
       </div>
     </div>
     <div class="row">
       <div class="form-group-4">
         <label for="dateStart"
-               [ngClass]="{'is-active': lblDateStart}">
+               class="is-active">
           Date Start
         </label>
         <input type="text"
                id="dateStart"
                name="dateStart"
-               (focus)="lblDateStart = true"
-               (blur)="labelMove()"
-               [(ngModel)]="eventDateStart">
+               placeholder="Date Start"
+               (focus)="dp.toggleCalendar()"
+               ngx-mydatepicker
+               #dp="ngx-mydatepicker"
+               [(ngModel)]="currentEvent.dateStart"
+               [options]="datePickerOpt"
+               required>
       </div>
       <div class="form-group-4">
         <label for="dateEnd"
-               [ngClass]="{'is-active': lblDateEnd}">
+               class="is-active">
           Date End
         </label>
         <input type="text"
                id="dateEnd"
                name="dateEnd"
-               (focus)="lblDateEnd = true"
-               (blur)="labelMove()"
-               [(ngModel)]="eventDateEnd">
+               placeholder="Date End"
+               (focus)="dp2.toggleCalendar()"
+               ngx-mydatepicker
+               #dp2="ngx-mydatepicker"
+               [(ngModel)]="currentEvent.dateEnd"
+               [options]="datePickerOpt"
+               required>
       </div>
       <div class="form-group-4">
         <label for="timeStart"
-               [ngClass]="{'is-active': lblTimeStart}">
+               class="is-active">
           Time Start
         </label>
-        <input type="text"
+        <input type="time"
                id="timeStart"
                name="timeStart"
-               (focus)="lblTimeStart = true"
-               (blur)="labelMove()"
-               [(ngModel)]="eventTimeStart">
+               #TimeStart="ngModel"
+               [(ngModel)]="currentEvent.timeStart"
+               [ngClass]="{'error': !TimeStart.valid && !TimeStart.pristine}"
+               required>
       </div>
       <div class="form-group-4">
         <label for="timeEnd"
-               [ngClass]="{'is-active': lblTimeEnd}">
+               class="is-active">
           Time End
         </label>
-        <input type="text"
+        <input type="time"
                id="timeEnd"
                name="timeEnd"
-               (focus)="lblTimeEnd = true"
-               (blur)="labelMove()"
-               [(ngModel)]="eventTimeEnd">
+               #TimeEnd="ngModel"
+               [(ngModel)]="currentEvent.timeEnd"
+               [ngClass]="{'error': !TimeEnd.valid && !TimeEnd.pristine}"
+               required>
       </div>
     </div>
     <div class="row">
@@ -88,7 +104,8 @@
                 name="eventImage"
                 (focus)="lblImage = true"
                 (blur)="labelMoveSelectImage()"
-                [(ngModel)]="selectedImage">
+                [(ngModel)]="currentEvent.imgPath"
+                required>
           <option *ngFor="let image of arrayImages"
                   [value]="image.path">
             {{image.name}}
@@ -104,7 +121,8 @@
                 name="eventTag"
                 (focus)="lblTag = true"
                 (blur)="labelMoveSelectTag()"
-                [(ngModel)]="selectedTag">
+                [(ngModel)]="currentEvent.tags"
+                required>
           <option *ngFor="let tag of arrayTags"
                   [value]="tag.name">
             {{tag.name}}
@@ -119,15 +137,16 @@
         <textarea name="description"
                   id="description"
                   placeholder="Insert the description of the event"
-        [(ngModel)]="eventDescription"></textarea>
+                  [(ngModel)]="currentEvent.description"
+                  required></textarea>
       </div>
     </div>
     <div class="row">
       <div class="form-group-2">
-        <button class="cancel">Cancel</button>
+        <button class="btn cancel" (click)="clearInputs();">Clear</button>
       </div>
       <div class="form-group-2">
-        <button (click)="sendEventToDB()">Publish</button>
+        <button [disabled]="!myForm.valid || myForm.pristine" class="btn" (click)="sendEventToDB()">{{btnSend}}</button>
       </div>
     </div>
   </form>
