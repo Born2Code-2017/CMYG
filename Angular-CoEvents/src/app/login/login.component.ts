@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ManagerDBModule } from '../shared/_services/dbManager.service';
 
@@ -11,8 +11,30 @@ import { ManagerDBModule } from '../shared/_services/dbManager.service';
 export class LoginComponent implements OnInit {
 
   users;
-  username: string;
-  password: string;
+  _username: string;
+  get username() {
+    return this._username;
+  }
+
+  set username(username: string) {
+    this._username = username;
+    if (this._username.length >= 1) {
+      this.lblUser = 1;
+    }
+  }
+
+  _password: string;
+  get password() {
+    return this._password;
+  }
+
+  set password(password: string) {
+    this._password = password;
+    if (this._password.length >= 1) {
+      this.lblPass = 1;
+    }
+  }
+
   checkbox: boolean;
   wrongCredentials: string;
   error_label_user: number;
