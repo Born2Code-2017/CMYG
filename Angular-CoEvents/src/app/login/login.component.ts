@@ -1,14 +1,18 @@
-import { Component, OnChanges, OnInit } from '@angular/core';
+import { Component, HostBinding, HostListener, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ManagerDBModule } from '../shared/_services/dbManager.service';
+import { routerTransition } from '../router.animations';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  animations: [routerTransition]
 })
 
 export class LoginComponent implements OnInit {
+
+  // @HostBinding('@routerTransition') routerTransition;
 
   users;
   _username: string;
@@ -57,7 +61,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.managerDB.getUsers().subscribe(
       arg => this.users = arg,
-      err => console.log('Error downloading users from Firebase')
+      err => console.log('Error downloading users from Firebase', err.status)
     );
   }
 

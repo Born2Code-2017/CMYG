@@ -1,22 +1,27 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, HostBinding, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { ManagerDBModule } from '../shared/_services/dbManager.service';
 import { NewEventGuard } from '../shared/_services/eventGuard.service';
 import { EventsHandler } from '../shared/_services/eventsHandler.service';
 
 import { INgxMyDpOptions } from 'ngx-mydatepicker';
+import { routerTransition } from '../router.animations';
 
 @Component({
   selector: 'app-new-event',
   templateUrl: './new-event.component.html',
-  styleUrls: ['./new-event.component.css']
+  styleUrls: ['./new-event.component.css'],
+  animations: [routerTransition]
 })
 
 export class NewEventComponent implements OnInit {
 
+  @HostBinding('@routerTransition') routerTransition;
+
   h2: string;
   btnSend: string;
+  btnCancel: string;
   loggedUser: string;
 
   // Label of the form
@@ -34,8 +39,6 @@ export class NewEventComponent implements OnInit {
   arrayTags;
 
   currentEvent;
-
-  templateVisible: boolean;
 
   // Date Picker
   private today = new Date();
@@ -60,14 +63,13 @@ export class NewEventComponent implements OnInit {
 
   constructor(private managerDB: ManagerDBModule,
               private router: Router,
+              private route: ActivatedRoute,
               private eventGuard: NewEventGuard,
               private eventsHandler: EventsHandler) {
     this.lblName = false;
     this.lblLocation = false;
     this.lblImage = false;
     this.lblTag = false;
-
-    this.templateVisible = false;
 
     this.arrayImages = [{
       name: 'Event',
@@ -123,15 +125,11 @@ export class NewEventComponent implements OnInit {
         interested: '',
         notGoing: ''
       };
-      this.templateVisible = true;
     } else {
-      this.eventsHandler.getEditEvent().subscribe(event => {
-        this.currentEvent = event;
-        this.templateVisible = true;
-        this.labelMove();
-        this.labelMoveSelectImage();
-        this.labelMoveSelectTag();
-      });
+      this.currentEvent = this.eventsHandler.getEditEvent();
+      this.labelMove();
+      this.labelMoveSelectImage();
+      this.labelMoveSelectTag();
     }
   }
 
@@ -139,9 +137,11 @@ export class NewEventComponent implements OnInit {
     if (this.router.url === '/new-event') {
       this.h2 = 'Create a new Event';
       this.btnSend = 'Publish!';
+      this.btnCancel = 'Clear Inputs';
     } else {
       this.h2 = 'You\'re updating your event';
       this.btnSend = 'Update!';
+      this.btnCancel = 'Go Back without edit';
     }
   }
 
@@ -160,7 +160,16 @@ export class NewEventComponent implements OnInit {
   }
 
   nameToUrl() {
-    this.currentEvent.url = this.currentEvent.name.replace(/ /g, '-').toLowerCase();
+    this.currentEvent.url = this.currentEvent.name
+      .replace(/ /g, '-')
+      .replace(/[.,:;&%$!"?|^_*()]/g, '')
+      .replace(/à/g, 'a')
+      .replace(/[éè]/g, 'e')
+      .replace(/ì/g, 'i')
+      .replace(/ò/g, 'o')
+      .replace(/ù/g, 'u')
+      .toLowerCase();
+    console.log(this.currentEvent.url);
   }
 
   sendEventToDB() {
@@ -179,21 +188,26 @@ export class NewEventComponent implements OnInit {
       this.managerDB.patchEvent(this.currentEvent.id, eventN).subscribe(arg => {
         console.log(arg);
         this.eventGuard.getNewEvent(true);
-        alert('Your Event was added, you\'ll be redirected to the Dashboard');
+        alert('Your Event was patched, you\'ll be redirected to the Dashboard');
         this.router.navigateByUrl('/dashboard').then();
       }, err => console.log('Something wrong in the subscribe of the addEvent', err.status));
     }
-
   }
 
   clearInputs() {
-    this.currentEvent.name = '';
-    this.currentEvent.location = '';
-    this.currentEvent.dateStart = this.eventDateStart;
-    this.currentEvent.dateEnd = this.eventDateEnd;
-    this.currentEvent.timeStart = '';
-    this.currentEvent.timeEnd = '';
-    this.currentEvent.description = '';
-    this.currentEvent.url = '';
+    if (this.router.url === '/new-event') {
+      this.currentEvent.name = '';
+      this.currentEvent.location = '';
+      this.currentEvent.dateStart = this.eventDateStart;
+      this.currentEvent.dateEnd = this.eventDateEnd;
+      this.currentEvent.timeStart = '';
+      this.currentEvent.timeEnd = '';
+      this.currentEvent.description = '';
+      this.currentEvent.url = '';
+    } else {
+      alert('Operation dismissed as requested. \n\n You\'ll be redirected to the Dashboard');
+      this.eventGuard.getNewEvent(true);
+      this.router.navigate(['/dashboard']).then();
+    }
   }
 }

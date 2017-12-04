@@ -1,5 +1,5 @@
 <header id="calendar">
-  <ul class="calendar">
+  <ul class="calendar" [@loaded]="arrayCalendar.length">
     <li class="calendar-days" *ngFor="let d of arrayCalendar" (click)="setDay(d.year+'-'+d.month+'-'+d.day)">
       <span class="calendar-days__number">{{d.day}}</span>
       <span class="calendar-days__dayname">{{d.lblDay}}</span>

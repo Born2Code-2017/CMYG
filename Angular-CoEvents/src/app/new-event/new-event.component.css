@@ -58,14 +58,18 @@ form {
   height: 200px;
 }
 
-[type="time"]{
+.form-group textarea.error {
+  border: 1px solid var(--red);
+}
+
+[type="time"] {
   font-family: 'Raleway', sans-serif;
   font-weight: lighter;
   padding: .4rem .625rem !important;
 }
 
 .form-group-2 input.error,
-.form-group-4 input.error{
+.form-group-4 input.error {
   border-bottom: 1px solid var(--red);
 }
 
@@ -77,7 +81,7 @@ form {
 }
 
 [disabled]::before,
-[disabled]::after{
+[disabled]::after {
   background: transparent;
 }
 

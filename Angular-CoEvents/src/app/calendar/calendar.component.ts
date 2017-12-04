@@ -1,12 +1,27 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { EventsHandler } from '../shared/_services/eventsHandler.service';
 import { ManagerDBModule } from '../shared/_services/dbManager.service';
+import { animate, keyframes, query, stagger, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.css']
+  styleUrls: ['./calendar.component.css'],
+  animations: [
+    trigger('loaded', [
+      transition('* => *', [
+        query(':enter', style({opacity: 0}), {optional: true}),
+        query(':enter', stagger('300ms', [
+          animate('.4s ease-in', keyframes([
+            style({opacity: 0, transform: 'translateX(-75%)', offset: 0}),
+            style({opacity: .5, transform: 'translateX(35px)', offset: 0.3}),
+            style({opacity: 1, transform: 'translateX(0)', offset: 1}),
+          ]))]), {optional: true})
+      ])
+    ])
+  ]
 })
+
 export class CalendarComponent implements OnInit {
 
   @Input() howMuchDays: number;

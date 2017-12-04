@@ -39,7 +39,10 @@ export class MenuComponent implements OnInit, AfterContentInit {
   doLogOut() {
     sessionStorage.removeItem('loggedUser');
     localStorage.removeItem('loggedUser');
-    this.router.navigateByUrl('/login').then();
+    this.router.navigateByUrl('/login').then(() => {
+      sessionStorage.removeItem('loggedUser');
+      localStorage.removeItem('loggedUser');
+    });
   }
 
 }

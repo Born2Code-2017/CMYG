@@ -9,7 +9,7 @@ export class EventsHandler {
   tags: Subject<object[]> = new Subject();
   dashTagFilter: Subject<string> = new Subject();
   loggedUser: Subject<string> = new Subject();
-  editEvent: Subject<string> = new Subject();
+  editEvent: object;
 
   constructor() { }
 
@@ -46,11 +46,11 @@ export class EventsHandler {
   }
 
   setEditEvent(event) {
-    this.editEvent.next(event);
+    this.editEvent = event;
   }
 
   getEditEvent() {
-    return this.editEvent.asObservable();
+    return this.editEvent;
   }
 
 }

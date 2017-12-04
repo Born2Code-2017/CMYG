@@ -54,7 +54,8 @@ export class EventComponent implements OnInit {
   }
 
   editEvent(event, url) {
-    this.router.navigate(['/edit-event/' + url]).then(() => this.eventsHandler.setEditEvent(event));
+    this.eventsHandler.setEditEvent(event);
+    this.router.navigate(['/edit-event/', url]).then();
   }
 
   deleteEvent(id) {

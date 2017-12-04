@@ -1,11 +1,25 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { ManagerDBModule } from '../shared/_services/dbManager.service';
 import { EventsHandler } from '../shared/_services/eventsHandler.service';
+import { animate, keyframes, query, stagger, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
-  styleUrls: ['./events.component.css']
+  styleUrls: ['./events.component.css'],
+  animations: [
+    trigger('loaded', [
+      transition('* <=> *', [
+        query(':enter', style({opacity: 0}), {optional: true}),
+        query(':enter', stagger('300ms', [
+          animate('.6s ease-in', keyframes([
+            style({opacity: 0, transform: 'translateY(50%)', offset: 0}),
+            style({opacity: .5, transform: 'translateY(25%)', offset: 0.5}),
+            style({opacity: 1, transform: 'translateY(0)', offset: 1}),
+          ]))]), {optional: true})
+      ])
+    ])
+  ]
 })
 
 export class EventsComponent implements OnInit {
@@ -29,47 +43,64 @@ export class EventsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.listEvents = [];
+
     this.managerDB.getEvents().subscribe(events => {
       this.listEvents = events;
       this.managerDB.getTags().subscribe(tags => {
         this.tagsList = tags;
-        this.loadEvents(this.today, this.listEvents, this.tagsList);
+        this.onInitLoadEvents(this.today, this.listEvents, this.tagsList);
         this.sendTags();
       }, err => console.log('Something wrong in the subscribe of the getTags: ', err.status));
     }, err => console.log('Something wrong in the subscribe of the getEvents: ', err.status));
 
-    this.getDay();
-    this.getDashTagFromService(this.today);
+    this.onGetDay();
+    this.onGetDashTagLoadEvents(this.today);
     this.firstLoad = true;
     this.eventsHandler.getUser().subscribe(user => this.userLogged = user);
   }
 
-  getDay() {
+  onGetDay() {
+    this.listEvents = [];
+
     this.eventsHandler.getDay().subscribe(date => {
-      this.firstLoad = false;
-      this.onLoadEvents(date, this.listEvents, this.tagsList);
-      this.getDashTagFromService(date);
+      this.managerDB.getEvents().subscribe(events => {
+        this.firstLoad = false;
+        this.listEvents = events;
+        this.onGetDayLoadEvents(date, this.listEvents, this.tagsList);
+        this.onGetDashTagLoadEvents(date);
+      });
     }, err => console.log('Something wrong in the subscribe of the getDay:', err.status));
   }
 
-  getDashTagFromService(date) {
+  onGetDashTagLoadEvents(date) {
     this.eventsHandler.getDashTagFilter().subscribe(tag => {
       this.loadEventsDashTag(date, this.listEvents, tag);
-    }, err => console.log('Something wrong in the subscribe of the getDashTagFromService: ', err.status));
+    }, err => console.log('Something wrong in the subscribe of the onGetDashTagLoadEvents: ', err.status));
   }
 
-  loadEvents(date, events, tags) {
+  onInitLoadEvents(date, events, tags) {
     this.eventShowed = [];
     for (const event in events) {
-
       if (events.hasOwnProperty(event)) {
-        for (const t of tags) {
-          if (t.name === events[event].tags) {
-            events[event].colorTag = t.color;
-          }
-        }
+        const splittedDate    = date.split('-', 3),
+              dateDay         = parseInt(splittedDate[2], 10),
+              dateMonth       = parseInt(splittedDate[1], 10),
+              eventDayStart   = events[event].dateStart.date.day,
+              eventMonthStart = events[event].dateStart.date.month,
+              eventDayEnd     = events[event].dateEnd.date.day,
+              eventMonthEnd   = events[event].dateEnd.date.month,
+              dateIsBetween   = eventDayStart >= dateDay && dateDay <= eventDayEnd,
+              eventMonth      = eventMonthStart >= dateMonth || dateMonth <= eventMonthEnd,
+              dateInRange     = dateIsBetween && eventMonth;
 
-        if (events[event].dateStart.formatted >= date) {
+        if (dateInRange) {
+          for (const tag of tags) {
+            if (tag.name === events[event].tags) {
+              events[event].colorTag = tag.color;
+            }
+          }
+
           events[event].id = event;
           this.eventShowed.push(events[event]);
         }
@@ -77,18 +108,22 @@ export class EventsComponent implements OnInit {
     }
   }
 
-  onLoadEvents(date, events, tags) {
+  onGetDayLoadEvents(date, events, tags) {
     this.eventShowed = [];
     for (const event in events) {
       if (events.hasOwnProperty(event)) {
-        const start           = events[event].dateStart.formatted.split('-', 3),
-              end             = events[event].dateEnd.formatted.split('-', 3),
-              unsplittedEnd   = events[event].dateEnd.formatted,
-              unsplittedStart = events[event].dateStart.formatted,
-              splicedDate     = date.split('-', 3),
-              newStart        = parseInt(start[2], 10),
-              newEnd          = parseInt(end[2], 10),
-              newDate         = parseInt(splicedDate[2], 10);
+        const eventDateStart = events[event].dateStart.formatted,
+              eventDateEnd   = events[event].dateEnd.formatted,
+              splittedDate   = date.split('-', 3);
+        let dayOfDate = null;
+
+        if (parseInt(splittedDate[2], 10) < 10) {
+          dayOfDate = '0' + splittedDate[2];
+        } else {
+          dayOfDate = splittedDate[2];
+        }
+
+        const newDate = splittedDate[0] + '-' + splittedDate[1] + '-' + dayOfDate;
 
         for (const t of tags) {
           if (t.name === events[event].tags) {
@@ -96,7 +131,7 @@ export class EventsComponent implements OnInit {
           }
         }
 
-        if (unsplittedStart === date || unsplittedEnd === date || (newDate >= newStart && newDate <= newEnd)) {
+        if (eventDateStart === date || eventDateEnd === date || (newDate >= eventDateStart && newDate <= eventDateEnd)) {
           events[event].id = event;
           this.eventShowed.push(events[event]);
         }
@@ -108,26 +143,18 @@ export class EventsComponent implements OnInit {
     this.eventShowed = [];
     for (const event in events) {
       if (events.hasOwnProperty(event)) {
-        const eventStart    = events[event].dateStart.formatted.split('-', 3),
-              eventEnd      = events[event].dateEnd.formatted.split('-', 3),
-              splicedDate   = date.split('-', 3),
-              newStart      = parseInt(eventStart[2], 10),
-              newEnd        = parseInt(eventEnd[2], 10),
-              newDate       = parseInt(splicedDate[2], 10),
-              dataInizio    = events[event].dateStart.formatted === date,
-              dataFine      = events[event].dateEnd.formatted === date,
-              dataIsBetween = newDate >= newStart && newDate <= newEnd,
-              dateIsInRange = dataInizio || dataFine || dataIsBetween;
+        const splittedDate    = date.split('-', 3),
+              dateDay         = parseInt(splittedDate[2], 10),
+              dateMonth       = parseInt(splittedDate[1], 10),
+              eventDayStart   = events[event].dateStart.date.day,
+              eventMonthStart = events[event].dateStart.date.month,
+              eventDayEnd     = events[event].dateEnd.date.day,
+              eventMonthEnd   = events[event].dateEnd.date.month,
+              dateIsBetween   = eventDayStart >= dateDay && dateDay <= eventDayEnd,
+              eventMonth      = eventMonthStart >= dateMonth || dateMonth <= eventMonthEnd,
+              dateInRange     = dateIsBetween && eventMonth;
 
-        let dataStartMonths = false;
-
-        if (this.firstLoad) {
-          dataStartMonths = newStart >= newDate || splicedDate[1] < eventEnd[1];
-        } else {
-          dataStartMonths = newStart >= newDate && splicedDate[1] < eventEnd[1];
-        }
-
-        if (dateIsInRange || dataStartMonths) {
+        if (dateInRange) {
           if (tag === events[event].tags || tag === 'all') {
             events[event].id = event;
             this.eventShowed.push(events[event]);
@@ -138,6 +165,8 @@ export class EventsComponent implements OnInit {
   }
 
   sendTags() {
+    this.tagsEvents = [];
+
     for (const e in this.listEvents) {
       if (this.listEvents.hasOwnProperty(e)) {
         const tmpTags = {
@@ -145,7 +174,6 @@ export class EventsComponent implements OnInit {
           dateStart: this.listEvents[e].dateStart,
           dateEnd: this.listEvents[e].dateEnd
         };
-
         this.tagsEvents.push(tmpTags);
       }
     }
