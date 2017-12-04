@@ -12,7 +12,7 @@ import { routerTransition } from '../router.animations';
 
 export class LoginComponent implements OnInit {
 
-  // @HostBinding('@routerTransition') routerTransition;
+  @HostBinding('@routerTransition') routerTransition;
 
   users;
   _username: string;

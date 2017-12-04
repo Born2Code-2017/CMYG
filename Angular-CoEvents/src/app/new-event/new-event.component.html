@@ -145,10 +145,10 @@
     </div>
     <div class="row">
       <div class="form-group-2">
-        <button class="btn cancel" (click)="clearInputs();">{{btnCancel}}</button>
+        <button type="button" class="btn cancel" (click)="clearInputs();">{{btnCancel}}</button>
       </div>
       <div class="form-group-2">
-        <button [disabled]="!myForm.valid || myForm.pristine" class="btn" (click)="sendEventToDB()">{{btnSend}}</button>
+        <button type="button" [disabled]="!myForm.valid || myForm.pristine" class="btn" (click)="sendEventToDB()">{{btnSend}}</button>
       </div>
     </div>
   </form>

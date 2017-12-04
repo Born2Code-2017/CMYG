@@ -12,7 +12,7 @@ import { routerTransition } from '../router.animations';
 
 export class PasswordLostComponent implements OnInit {
 
-  // @HostBinding('@routerTransition') routerTransition;
+  @HostBinding('@routerTransition') routerTransition;
 
   users;
   email: string;
@@ -31,7 +31,7 @@ export class PasswordLostComponent implements OnInit {
   ngOnInit() {
     this.managerDB.getUsers().subscribe(
       arg => this.users = arg,
-      err => console.log('Error downloading users from Firebase')
+      err => console.log('Error downloading users from Firebase ', err.status)
     );
   }
 
