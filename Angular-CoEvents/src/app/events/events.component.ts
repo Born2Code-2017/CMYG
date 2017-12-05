@@ -1,7 +1,10 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
+import { animate, keyframes, query, stagger, style, transition, trigger } from '@angular/animations';
+
+import * as lodash from 'lodash';
+
 import { ManagerDBModule } from '../shared/_services/dbManager.service';
 import { EventsHandler } from '../shared/_services/eventsHandler.service';
-import { animate, keyframes, query, stagger, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-events',
@@ -106,6 +109,7 @@ export class EventsComponent implements OnInit {
         }
       }
     }
+    this.eventShowed = lodash.sortBy(this.eventShowed, ['dateStart.formatted', 'dateEnd.formatted', 'name']);
   }
 
   onGetDayLoadEvents(date, events, tags) {
@@ -137,6 +141,7 @@ export class EventsComponent implements OnInit {
         }
       }
     }
+    this.eventShowed = lodash.sortBy(this.eventShowed, ['dateStart.formatted', 'dateEnd.formatted', 'name']);
   }
 
   loadEventsDashTag(date, events, tag) {
@@ -162,6 +167,7 @@ export class EventsComponent implements OnInit {
         }
       }
     }
+    this.eventShowed = lodash.sortBy(this.eventShowed, ['name', 'dateStart.formatted', 'dateEnd.formatted', 'name']);
   }
 
   sendTags() {

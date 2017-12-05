@@ -18,3 +18,8 @@ If you get some warnings during the `ng serve` compilation, don't bother at them
 #### ngx-datepicker
 
 In the project we're currently using the [ngx-datepicker](https://github.com/kekeh/ngx-mydatepicker) by kekeh
+
+#### Lodash
+
+Is a library to sort easily an array of object and more.
+Here the [docs](https://lodash.com/docs/#sortBy) about the sort function we've used.
