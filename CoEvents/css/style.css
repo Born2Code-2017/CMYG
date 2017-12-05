@@ -259,12 +259,38 @@ button,
   margin: 1rem auto;
 }
 
-#calendar {
+#calendar,
+#new-event,
+#new-events {
   position: fixed;
   width: calc(100% - 250px);
   top: 0;
   right: 0;
   height: 121px;
+}
+
+#new-event {
+  height: 121px;
+  background-color: var(--dirty-white);
+}
+
+.event-block {
+  padding: 2rem;
+}
+
+#new-events {
+  position: absolute;
+  overflow-y: scroll;
+  width: calc(100% - 250px);
+  height: calc(100% - 121px);
+  top: 121px;
+  right: 0;
+  padding: 2rem;
+  margin: 0;
+}
+
+#new-events .events-title {
+  color: var(--dark-gray);
 }
 
 .calendar {
@@ -423,7 +449,9 @@ button,
   position: absolute;
 }
 
-#events {
+#events,
+#description {
+  
   position: absolute;
   overflow-y: scroll;
   width: calc(100% - 250px);
@@ -432,6 +460,76 @@ button,
   right: 0;
   padding: 2rem;
   margin: 0;
+}
+
+#description {
+  height: 100%;
+  top: 0px;
+  padding: 0;
+  overflow: hidden;
+}
+
+#info-block {
+  /* background-color: rgba(175, 175, 175, .8); */
+  position: relative;
+  overflow-y: scroll;
+  float: left;
+  height: 100%;
+  width: calc(100% - 300px); 
+}
+
+#hide-buttons {
+  display: hide;
+}
+
+#event-image {
+  position: relative;
+  height: 25%;
+  background: url('../img/event-image1.png') 0 0 no-repeat;
+  background-size: cover;
+}
+
+#description-event {
+  padding: 2rem;
+}
+
+#description-form {
+  margin-bottom: 2rem;
+}
+
+#description-right {
+  background-color: var(--dirty-white);
+  position: fixed;
+  right: 0px;
+  height: 100%;
+  width: 300px;
+  padding: 2rem;
+  padding-top: 1rem;
+}
+
+.photo-org {
+  position: relative;
+  height: 100px;
+  width: 100px;
+  border: 1px solid var(--white);
+  border-radius: 50px;
+  background: url('../img/work6.jpg') 100% 0 no-repeat;
+  background-size: cover;
+  margin-bottom: 0.5rem;
+}
+
+.form-circle {
+  display: hide;
+}
+
+.org {
+  display: block;
+  font-weight: bold;
+}
+
+.org:last-child{
+  font-weight: normal;
+  margin-bottom: 2rem;
 }
 
 .row {
@@ -590,14 +688,13 @@ p.category {
 }
 
 .form-group {
-  width: 100%;
-  margin: .315rem 0;
   position: relative;
+  margin: .315rem 0;
 }
 
 .form-group.tc {
   margin: 1rem auto;
-}
+} 
 
 #lost-password-form .form-group {
   margin: 1rem auto;
@@ -729,7 +826,7 @@ button::after {
 .btn:hover::before,
 button:hover::before,
 .btn:hover::after,
-button:hover::after {
+button:hover::after{
   width: 50%;
 }
 
@@ -778,7 +875,7 @@ button:hover::after {
   }
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 900px) {
   :root {
     font-size: 14px;
   }
@@ -842,6 +939,75 @@ button:hover::after {
   .is-1 .card-btn .btn {
     width: 100%;
     height: 100%;
+  }
+
+  #description  {
+    position: fixed;
+    top: 50px;
+    width: 100%;
+    overflow: hidden;
+    clear: both;
+    overflow-y: scroll;
+    
+  }
+
+  #info-block {
+    width: 100%;
+    height: auto;
+  }
+
+  #description-right {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    overflow-y: scroll;
+    margin-bottom: 50px;
+  }
+
+  #event-image {
+    width: 100%;
+    height: 120px;
+    overflow: hidden;
+  }
+
+  .photo-org {
+    height: 50px;
+    width: 50px;
+  }
+
+  .form-group.hide {
+    display: none;
+  }
+
+  .hide-buttons {
+    display: show;
+  }
+
+  .form-circle button {
+    position: fixed;
+    color: var(--dirty-white);
+    bottom: 30px;
+    right: 30px;
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+    background: var(--sea-green);
+    border: none;
+    box-shadow: 0px 4px 6px rgba(175, 175, 175, .8);
+  }
+
+  .form-circle button:hover {
+    background: var(--blue-sapphire);
+  }
+
+  .form-circle button::before,
+  .form-circle button::after {
+    background: var(--blue-sapphire);
+  }
+
+  .form-circle.sh button{
+    left: 30px;
   }
 }
 
