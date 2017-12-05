@@ -4,7 +4,7 @@
       <h1><span>CoEvents</span></h1>
     </header>
     <main>
-      <form id="form" name="login-form" method="post" novalidate>
+      <form name="login-form" novalidate>
         <div class="form-group">
           <input
             id="username"
@@ -44,7 +44,7 @@
           <label for="remember" class="login-check">Remember Me</label>
         </div>
         <div class="form-group">
-          <button type="submit" (click)="doLogin()">Sign In</button>
+          <button type="button" (click)="doLogin()">Sign In</button>
         </div>
         <div class="form-group tc">
           <p id="login-error">{{wrongCredentials}}</p>

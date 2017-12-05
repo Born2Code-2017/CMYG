@@ -1,2 +1,3 @@
-<app-event *ngFor="let e of eventShowed" [event]="e"></app-event>
-
+<div class="container-animated" [@loaded]="eventShowed.length">
+  <app-event *ngFor="let e of eventShowed" [event]="e" [user]="userLogged"></app-event>
+</div>

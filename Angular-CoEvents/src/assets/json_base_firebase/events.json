@@ -1,114 +1,160 @@
-[
-  {
-    "name": "Angular 5 Course",
-    "location": "Via Marsala 29/H, 00185 Roma RM",
-    "dateStart": "2017-11-21",
-    "dateEnd": "2017-11-21",
-    "timeStart": "09:00:00",
-    "timeEnd": "18:00:00",
-    "imgPath": "./assets/img/events.png",
-    "tags": "work",
-    "description": "Introduction to Angular 5 for beniggers",
-    "url": "angular-5-course",
-    "owner": "admin",
-    "partecipants": "",
+{
+  "-L-Dk0Dvcj2rzqjTfrEA": {
+    "dateEnd": {
+      "date": {
+        "day": 6,
+        "month": 12,
+        "year": 2017
+      },
+      "epoc": 1512514800,
+      "formatted": "2017-12-06",
+      "jsdate": "2017-12-05T23:00:00.000Z"
+    },
+    "dateStart": {
+      "date": {
+        "day": 30,
+        "month": 11,
+        "year": 2017
+      },
+      "formatted": "2017-11-30"
+    },
+    "description": "We'll have an awesome course about react.",
+    "imgPath": "sunny.png",
     "interested": "",
-    "notGoing": ""
+    "location": "Rome",
+    "name": "React Day baby",
+    "notGoing": "",
+    "owner": "Yulia",
+    "partecipants": "",
+    "tags": "party",
+    "timeEnd": "18:30",
+    "timeStart": "09:30",
+    "url": "react-day-baby"
   },
-  {
-    "name": "React: Introduction and More - Day 1",
-    "location": "Via Marsala 29/H, 00185 Roma RM",
-    "dateStart": "2017-11-24",
-    "dateEnd": "2017-11-24",
-    "timeStart": "09:00:00",
-    "timeEnd": "13:00:00",
-    "imgPath": "./assets/img/events.png",
-    "tags": "work",
-    "description": "Introduction to React for beginners",
-    "url": "react-introduction-day-1",
+  "-L-GG7IvSITr80nGZ-wE": {
+    "dateEnd": {
+      "date": {
+        "day": 7,
+        "month": 12,
+        "year": 2017
+      },
+      "epoc": 1512601200,
+      "formatted": "2017-12-07",
+      "jsdate": "2017-12-06T23:00:00.000Z"
+    },
+    "dateStart": {
+      "date": {
+        "day": 1,
+        "month": 12,
+        "year": 2017
+      },
+      "formatted": "2017-12-1"
+    },
+    "description": "Welcome to the Jungle!",
+    "imgPath": "sunny.png",
+    "interested": "",
+    "location": "Riccione",
+    "name": "Mi piacciono i DARIO",
+    "notGoing": "",
     "owner": "Guich",
     "partecipants": "",
-    "interested": "",
-    "notGoing": ""
+    "tags": "party",
+    "timeEnd": "18:00",
+    "timeStart": "10:00",
+    "url": "mi-piacciono-i-dario"
   },
-  {
-    "name": "React: Gooing Deeper",
-    "location": "Via Marsala 29/H, 00185 Roma RM",
-    "dateStart": "2017-11-25",
-    "dateEnd": "2017-11-26",
-    "timeStart": "09:00:00",
-    "timeEnd": "13:00:00",
-    "imgPath": "./assets/img/events.png",
-    "tags": "work",
-    "description": "Gooing Deeper into React and its logic",
-    "url": "react-introduction-day-2",
+  "-L-GTeBBDsFnefBpGjFE": {
+    "dateEnd": {
+      "date": {
+        "day": 2,
+        "month": 12,
+        "year": 2017
+      },
+      "formatted": "2017-12-2"
+    },
+    "dateStart": {
+      "date": {
+        "day": 1,
+        "month": 12,
+        "year": 2017
+      },
+      "formatted": "2017-12-1"
+    },
+    "description": "njsladkasdasdasdasd",
+    "imgPath": "sunny.png",
+    "interested": "",
+    "location": "Riccione",
+    "name": "Test Form New Event",
+    "notGoing": "",
     "owner": "Yulia",
     "partecipants": "",
-    "interested": "",
-    "notGoing": ""
-  },
-  {
-    "name": "React: Gooing Deeper",
-    "location": "Via Marsala 29/H, 00185 Roma RM",
-    "dateStart": "2017-11-25",
-    "dateEnd": "2017-11-26",
-    "timeStart": "09:00:00",
-    "timeEnd": "13:00:00",
-    "imgPath": "./assets/img/events.png",
     "tags": "work",
-    "description": "Gooing Deeper into React and its logic",
-    "url": "react-introduction-day-2",
-    "owner": "Yulia",
-    "partecipants": "",
-    "interested": "",
-    "notGoing": ""
+    "timeEnd": "18:00",
+    "timeStart": "15:00",
+    "url": "test-form-new-event"
   },
-  {
-    "name": "React",
-    "location": "Via Marsala 29/H, 00185 Roma RM",
-    "dateStart": "2017-11-28",
-    "dateEnd": "2017-11-30",
-    "timeStart": "09:00:00",
-    "timeEnd": "13:00:00",
-    "imgPath": "./assets/img/events.png",
-    "tags": "work",
-    "description": "Gooing Deeper into React and its logic",
-    "url": "react-introduction-day-2",
-    "owner": "Yulia",
-    "partecipants": "",
+  "-L-Gaw258FVR9mC_smYb": {
+    "dateEnd": {
+      "date": {
+        "day": 2,
+        "month": 12,
+        "year": 2017
+      },
+      "formatted": "2017-12-2"
+    },
+    "dateStart": {
+      "date": {
+        "day": 1,
+        "month": 12,
+        "year": 2017
+      },
+      "formatted": "2017-12-1"
+    },
+    "description": "Something like an event",
+    "imgPath": "sunny.png",
     "interested": "",
-    "notGoing": ""
+    "location": "Riccione",
+    "name": "New Test Event",
+    "notGoing": "",
+    "owner": "Guich",
+    "partecipants": "",
+    "tags": "work",
+    "timeEnd": "14:00",
+    "timeStart": "10:00",
+    "url": "new-test-event"
   },
-  {
-    "name": "React: Gooing Deeper",
-    "location": "Via Marsala 29/H, 00185 Roma RM",
-    "dateStart": "2017-11-27",
-    "dateEnd": "2017-11-27",
-    "timeStart": "09:00:00",
-    "timeEnd": "13:00:00",
-    "imgPath": "./assets/img/events.png",
-    "tags": "work",
-    "description": "Gooing Deeper into React and its logic",
-    "url": "react-introduction-day-2",
-    "owner": "Yulia",
-    "partecipants": "",
+  "-L-Gb39cR-lFQlBtlQ8B": {
+    "dateEnd": {
+      "date": {
+        "day": 9,
+        "month": 12,
+        "year": 2017
+      },
+      "epoc": 1512774000,
+      "formatted": "2017-12-09",
+      "jsdate": "2017-12-08T23:00:00.000Z"
+    },
+    "dateStart": {
+      "date": {
+        "day": 5,
+        "month": 12,
+        "year": 2017
+      },
+      "epoc": 1512428400,
+      "formatted": "2017-12-05",
+      "jsdate": "2017-12-04T23:00:00.000Z"
+    },
+    "description": "jkbasdnlkmasdasda",
+    "imgPath": "events.png",
     "interested": "",
-    "notGoing": ""
-  },
-  {
-    "name": "React: Gooing Deeper",
-    "location": "Via Marsala 29/H, 00185 Roma RM",
-    "dateStart": "2017-12-01",
-    "dateEnd": "2017-12-02",
-    "timeStart": "09:00:00",
-    "timeEnd": "13:00:00",
-    "imgPath": "./assets/img/events.png",
-    "tags": "work",
-    "description": "Gooing Deeper into React and its logic",
-    "url": "react-introduction-day-2",
-    "owner": "Yulia",
+    "location": "Milano",
+    "name": "Another thing like that",
+    "notGoing": "",
+    "owner": "Guich",
     "partecipants": "",
-    "interested": "",
-    "notGoing": ""
+    "tags": "random",
+    "timeEnd": "10:00",
+    "timeStart": "09:00",
+    "url": "another-thing-like-that"
   }
-]
+}

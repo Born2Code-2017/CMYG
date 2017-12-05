@@ -1,13 +1,28 @@
-import { Component, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { EventsHandler } from '../shared/_services/eventsHandler.service';
 import { ManagerDBModule } from '../shared/_services/dbManager.service';
+import { animate, keyframes, query, stagger, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.css']
+  styleUrls: ['./calendar.component.css'],
+  animations: [
+    trigger('loaded', [
+      transition('* => *', [
+        query(':enter', style({opacity: 0}), {optional: true}),
+        query(':enter', stagger('300ms', [
+          animate('.4s ease-in', keyframes([
+            style({opacity: 0, transform: 'translateX(-75%)', offset: 0}),
+            style({opacity: .5, transform: 'translateX(35px)', offset: 0.3}),
+            style({opacity: 1, transform: 'translateX(0)', offset: 1}),
+          ]))]), {optional: true})
+      ])
+    ])
+  ]
 })
-export class CalendarComponent implements OnInit, OnChanges {
+
+export class CalendarComponent implements OnInit {
 
   @Input() howMuchDays: number;
   arrayCalendar: object[];
@@ -19,10 +34,6 @@ export class CalendarComponent implements OnInit, OnChanges {
     this.arrayCalendar = [];
     this.tags = [];
     this.tagsColor = [];
-  }
-
-  ngOnChanges() {
-    this.eventsHandler.pushCalendar(this.arrayCalendar);
   }
 
   ngOnInit() {
@@ -49,19 +60,21 @@ export class CalendarComponent implements OnInit, OnChanges {
             actualDate = year + '-' + month + '-' + nDay;
 
       for (const t of tags) {
-        const start    = t.dateStart.split('-', 3),
-              end      = t.dateEnd.split('-', 3),
+        const start    = t.dateStart.formatted.split('-', 3),
+              end      = t.dateEnd.formatted.split('-', 3),
               newStart = parseInt(start[2], 10),
               newEnd   = parseInt(end[2], 10);
 
-        if (t.dateStart === actualDate || t.dateEnd === actualDate || (nDay >= newStart && nDay <= newEnd)) {
+        if (t.dateStart.formatted === actualDate || t.dateEnd.formatted === actualDate || (nDay >= newStart && nDay <= newEnd)) {
           for (const c of this.tagsColor) {
             if (c.name === t.tags) {
-              const tmpTag = {
-                tags: t.tags,
-                color: c.color
-              };
-              this.tags.push(tmpTag);
+              if (this.tags.map(arg => arg.tags).indexOf(t.tags) === -1) {
+                const tmpTag = {
+                  tags: t.tags,
+                  color: c.color
+                };
+                this.tags.push(tmpTag);
+              }
             }
           }
         }
@@ -78,11 +91,10 @@ export class CalendarComponent implements OnInit, OnChanges {
       this.arrayCalendar.push(objDate);
       this.tags = [];
     }
-    // console.log(this.arrayCalendar);
   }
 
-  pushDay(day) {
-    this.eventsHandler.pushDay(day);
+  setDay(day) {
+    this.eventsHandler.setDay(day);
   }
 
 }

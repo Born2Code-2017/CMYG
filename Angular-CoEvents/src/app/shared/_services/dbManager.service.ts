@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 import { UsersInterface } from '../_interfaces/usersInterface';
 import { EventsInterface } from '../_interfaces/events-interface';
@@ -37,18 +37,16 @@ export class ManagerDBModule {
     return this.http.post(url, event);
   }
 
-  // get the event into the json in firebase with the KEY.
-  // getSingleEvent(id) {
-  //   const url = this.apiUrl + 'events.json?orderBy="$key"&startAt=\"' + id + '\"&endAt=\"' + id + '\"';
-  //   console.log(url);
-  //   return this.http.get(url);
-  // }
-  //
-  // delete the event into the JSON in FIREBASE based on the its INDEX.
-  // deleteInFire(id) {
-  //   const url = this.apiUrl + 'events/' + id + '.json';
-  //   return this.http.delete(url);
-  // }
+  deleteEvent(id) {
+    const url = this.apiUrl + 'events/' + id + '.json';
+    return this.http.delete(url);
+  }
+
+  patchEvent(id, event) {
+    const url = this.apiUrl + 'events/' + id + '.json';
+    event.id = null;
+    return this.http.patch(url, event);
+  }
 
   isUserLogged() {
     if (sessionStorage.getItem('loggedUser') || localStorage.getItem('loggedUser')) {

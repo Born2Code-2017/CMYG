@@ -1,66 +1,77 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
-import { Event } from '../shared/_models/events.model';
 import { ManagerDBModule } from '../shared/_services/dbManager.service';
-import { Router } from '@angular/router';
+import { NewEventGuard } from '../shared/_services/eventGuard.service';
+import { EventsHandler } from '../shared/_services/eventsHandler.service';
+
+import { INgxMyDpOptions } from 'ngx-mydatepicker';
+import { routerTransition } from '../router.animations';
 
 @Component({
   selector: 'app-new-event',
   templateUrl: './new-event.component.html',
-  styleUrls: ['./new-event.component.css']
+  styleUrls: ['./new-event.component.css'],
+  animations: [routerTransition]
 })
 
 export class NewEventComponent implements OnInit {
 
+  @HostBinding('@routerTransition') routerTransition;
+
   h2: string;
+  btnSend: string;
+  btnCancel: string;
   loggedUser: string;
 
   // Label of the form
   lblName: boolean;
   lblLocation: boolean;
-  lblDateStart: boolean;
-  lblDateEnd: boolean;
-  lblTimeStart: boolean;
-  lblTimeEnd: boolean;
   lblImage: boolean;
   lblTag: boolean;
 
-  // Input of the Form
-  eventName: string;
-  eventLocation: string;
-  eventDateStart: string;
-  eventDateEnd: string;
-  eventTimeStart: string;
-  eventTimeEnd: string;
-  selectedImage: string;
-  selectedTag: string;
-  eventDescription: string;
-  eventUrl: string;
+  // Dates
+  eventDateStart: object;
+  eventDateEnd: object;
 
   // Arrays
   arrayImages: object[];
   arrayTags;
 
+  currentEvent;
+
+  // Date Picker
+  private today = new Date();
+  private tomoz = new Date(this.today.getTime() + 24 * 60 * 60 * 1000);
+
+  private yearOfToday = this.today.getUTCFullYear();
+  private monthOfToday = this.today.getUTCMonth() + 1;
+  private dayOfToday = this.today.getUTCDate();
+
+  private yearOfTomoz = this.tomoz.getUTCFullYear();
+  private monthOfTomoz = this.tomoz.getUTCMonth() + 1;
+  private dayOfTomoz = this.tomoz.getUTCDate();
+
+  datePickerOpt: INgxMyDpOptions = {
+    dateFormat: 'yyyy-mm-dd',
+    disableUntil: {
+      year: this.yearOfToday,
+      month: this.monthOfToday,
+      day: this.today.getUTCDate() - 1
+    }
+  };
+
   constructor(private managerDB: ManagerDBModule,
-              private router: Router) {
+              private router: Router,
+              private route: ActivatedRoute,
+              private eventGuard: NewEventGuard,
+              private eventsHandler: EventsHandler) {
     this.lblName = false;
     this.lblLocation = false;
-    this.lblDateStart = false;
-    this.lblDateEnd = false;
-    this.lblTimeStart = false;
-    this.lblTimeEnd = false;
+    this.lblImage = false;
     this.lblTag = false;
 
-    this.eventName = '';
-    this.eventLocation = '';
-    this.eventDateStart = '';
-    this.eventDateEnd = '';
-    this.eventTimeStart = '';
-    this.eventTimeEnd = '';
     this.arrayImages = [{
-      name: 'Choose your image',
-      path: ''
-    }, {
       name: 'Event',
       path: 'events.png'
     }, {
@@ -71,74 +82,132 @@ export class NewEventComponent implements OnInit {
       path: 'panorama.png'
     }];
 
-    this.managerDB.getTags().subscribe(tags => this.arrayTags = tags);
-    this.eventDescription = '';
-    this.eventUrl = '';
+    this.managerDB.getTags().subscribe(
+      tags => this.arrayTags = tags,
+      err => console.log('Error into Tag subscribe in new Event', err.status)
+    );
+
+    this.eventDateStart = {
+      date: {
+        year: this.yearOfToday,
+        month: this.monthOfToday,
+        day: this.dayOfToday
+      },
+      formatted: this.yearOfToday + '-' + this.monthOfToday + '-' + this.dayOfToday
+    };
+
+    this.eventDateEnd = {
+      date: {
+        year: this.yearOfTomoz,
+        month: this.monthOfTomoz,
+        day: this.dayOfTomoz
+      },
+      formatted: this.yearOfTomoz + '-' + this.monthOfTomoz + '-' + this.dayOfTomoz
+    };
+
+    this.eventsHandler.getUser().subscribe(user => {
+      this.loggedUser = user;
+    });
+
+    if (this.router.url === '/new-event') {
+      this.currentEvent = {
+        name: '',
+        location: '',
+        dateStart: this.eventDateStart,
+        dateEnd: this.eventDateEnd,
+        timeStart: '',
+        timeEnd: '',
+        imgPath: '',
+        tags: '',
+        description: '',
+        url: '',
+        partecipants: '',
+        interested: '',
+        notGoing: ''
+      };
+    } else {
+      this.currentEvent = this.eventsHandler.getEditEvent();
+      this.labelMove();
+      this.labelMoveSelectImage();
+      this.labelMoveSelectTag();
+    }
   }
 
   ngOnInit() {
-    this.h2 = 'Create a new Event';
-    this.getLoggedUser();
+    if (this.router.url === '/new-event') {
+      this.h2 = 'Create a new Event';
+      this.btnSend = 'Publish!';
+      this.btnCancel = 'Clear Inputs';
+    } else {
+      this.h2 = 'You\'re updating your event';
+      this.btnSend = 'Update!';
+      this.btnCancel = 'Go Back without edit';
+    }
   }
 
   labelMove() {
-    this.eventName.length >= 1 ? this.lblName = true : this.lblName = false;
-    this.eventLocation.length >= 1 ? this.lblLocation = true : this.lblLocation = false;
-    this.eventDateStart.length >= 1 ? this.lblDateStart = true : this.lblDateStart = false;
-    this.eventDateEnd.length >= 1 ? this.lblDateEnd = true : this.lblDateEnd = false;
-    this.eventTimeStart.length >= 1 ? this.lblTimeStart = true : this.lblTimeStart = false;
-    this.eventTimeEnd.length >= 1 ? this.lblTimeEnd = true : this.lblTimeEnd = false;
+    this.currentEvent.name.length >= 1 ? this.lblName = true : this.lblName = false;
+    this.currentEvent.location.length >= 1 ? this.lblLocation = true : this.lblLocation = false;
   }
 
+
   labelMoveSelectImage() {
-    this.selectedImage.length >= 1 ? this.lblImage = true : this.lblImage = false;
+    this.currentEvent.imgPath.length >= 1 ? this.lblImage = true : this.lblImage = false;
   }
 
   labelMoveSelectTag() {
-    this.selectedTag.length >= 1 ? this.lblTag = true : this.lblTag = false;
-  }
-
-  getLoggedUser() {
-    const sessionUser = JSON.parse(sessionStorage.getItem('loggedUser')),
-          localUser   = JSON.parse(localStorage.getItem('loggedUser'));
-
-    if (sessionUser) {
-      this.loggedUser = sessionUser.username;
-    }
-
-    if (localUser) {
-      this.loggedUser = localUser.username;
-    }
+    this.currentEvent.tags.length >= 1 ? this.lblTag = true : this.lblTag = false;
   }
 
   nameToUrl() {
-    this.eventUrl = this.eventName.replace(/ /g, '-').toLowerCase();
+    this.currentEvent.url = this.currentEvent.name
+      .replace(/ /g, '-')
+      .replace(/[.,:;&%$!"?|^_*()]/g, '')
+      .replace(/à/g, 'a')
+      .replace(/[éè]/g, 'e')
+      .replace(/ì/g, 'i')
+      .replace(/ò/g, 'o')
+      .replace(/ù/g, 'u')
+      .toLowerCase();
+    console.log(this.currentEvent.url);
   }
 
   sendEventToDB() {
-    this.nameToUrl();
+    const eventN = this.currentEvent;
+    eventN.owner = this.loggedUser;
+    eventN.colorTag = null;
 
-    const event: Event = {
-      name: this.eventName,
-      location: this.eventLocation,
-      dateStart: this.eventDateStart,
-      dateEnd: this.eventDateEnd,
-      timeStart: this.eventTimeStart,
-      timeEnd: this.eventTimeEnd,
-      imgPath: this.selectedImage,
-      tags: this.selectedTag,
-      description: this.eventDescription,
-      url: this.eventUrl,
-      owner: this.loggedUser,
-      partecipants: '',
-      interested: '',
-      notGoing: ''
-    };
+    if (this.router.url === '/new-event') {
+      this.managerDB.addEvent(eventN).subscribe(arg => {
+        console.log(arg);
+        this.eventGuard.getNewEvent(true);
+        alert('Your Event was added, you\'ll be redirected to the Dashboard');
+        this.router.navigateByUrl('/dashboard').then();
+      }, err => console.log('Something wrong in the subscribe of the addEvent', err.status));
+    } else {
+      this.managerDB.patchEvent(this.currentEvent.id, eventN).subscribe(arg => {
+        console.log(arg);
+        this.eventGuard.getNewEvent(true);
+        alert('Your Event was patched, you\'ll be redirected to the Dashboard');
+        this.router.navigateByUrl('/dashboard').then();
+      }, err => console.log('Something wrong in the subscribe of the addEvent', err.status));
+    }
+  }
 
-    this.managerDB.addEvent(event).subscribe(arg => {
-      console.log(arg);
-      alert('Your Event was added, you\'ll be redirected to the Dashboard');
-      this.router.navigateByUrl('/dashboard').then();
-    }, err => console.log('Something wrong in the subscribe of the addEvent', err.status));
+  clearInputs() {
+    if (this.router.url === '/new-event') {
+      this.currentEvent.name = '';
+      this.currentEvent.location = '';
+      this.currentEvent.dateStart = this.eventDateStart;
+      this.currentEvent.dateEnd = this.eventDateEnd;
+      this.currentEvent.timeStart = '';
+      this.currentEvent.timeEnd = '';
+      this.currentEvent.description = '';
+      this.currentEvent.url = '';
+    } else {
+      alert('Operation dismissed as requested. \n\n You\'ll be redirected to the Dashboard');
+      this.eventGuard.getNewEvent(true);
+      this.router.navigate(['/dashboard']).then();
+    }
   }
 }

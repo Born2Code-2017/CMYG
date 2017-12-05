@@ -15,16 +15,16 @@
     </div>
     <nav class="nav">
       <ul class="fa-ul">
-        <li class="nav-mv">
-          <i class="fa fa-fw fa-user"
-             aria-hidden="true"></i>
-          <a routerLink="/profile">Profile</a>
-        </li>
         <li class="nav-mv events" appMenu>
           <i class="fa fa-fw fa-calendar-o"
              aria-hidden="true"></i> Events
           <ul class="fa-ul nav-sm"
               [ngClass]="{'active': isActive === 1}">
+            <li class="nav-sm_smv">
+              <i class="fa fa-fw fa-calendar-plus-o"
+                 aria-hidden="true"></i>
+              <a routerLink="/new-event">New Event</a>
+            </li>
             <li class="nav-sm_smv">
               <i class="fa fa-fw fa-calendar"
                  aria-hidden="true"></i>
@@ -35,12 +35,12 @@
                  aria-hidden="true"></i>
               <a routerLink="/profile">My Events</a>
             </li>
-            <li class="nav-sm_smv">
-              <i class="fa fa-fw fa-calendar-plus-o"
-                 aria-hidden="true"></i>
-              <a routerLink="/new-event">New Event</a>
-            </li>
           </ul>
+        </li>
+        <li class="nav-mv">
+          <i class="fa fa-fw fa-user"
+             aria-hidden="true"></i>
+          <a routerLink="/profile">Profile</a>
         </li>
         <li class="nav-mv">
           <i class="fa fa-fw fa-building"

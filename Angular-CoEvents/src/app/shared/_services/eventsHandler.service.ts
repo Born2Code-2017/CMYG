@@ -1,30 +1,35 @@
-import { EventEmitter, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class EventsHandler {
 
-  calendar: Subject<object[]> = new Subject();
   day: Subject<string> = new Subject();
   tags: Subject<object[]> = new Subject();
   dashTagFilter: Subject<string> = new Subject();
+  loggedUser: Subject<string> = new Subject();
+  editEvent: object;
 
   constructor() { }
 
-  pushCalendar(cal) {
-    this.calendar.next(cal);
-  }
-
-  pushDay(day) {
+  setDay(day) {
     this.day.next(day);
   }
 
-  pushTags(tags) {
+  getDay(): Observable<string> {
+    return this.day.asObservable();
+  }
+
+  setTags(tags) {
     this.tags.next(tags);
   }
 
-  pushDashTagFilter(tag) {
+  getTags(): Observable<object[]> {
+    return this.tags.asObservable();
+  }
+
+  setDashTagFilter(tag) {
     this.dashTagFilter.next(tag);
   }
 
@@ -32,11 +37,20 @@ export class EventsHandler {
     return this.dashTagFilter.asObservable();
   }
 
-  getDay(): Observable<string> {
-    return this.day.asObservable();
+  setUser(user) {
+    this.loggedUser.next(user);
   }
 
-  getTags(): Observable<object[]> {
-    return this.tags.asObservable();
+  getUser(): Observable<string> {
+    return this.loggedUser.asObservable();
   }
+
+  setEditEvent(event) {
+    this.editEvent = event;
+  }
+
+  getEditEvent() {
+    return this.editEvent;
+  }
+
 }

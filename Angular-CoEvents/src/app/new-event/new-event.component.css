@@ -58,6 +58,38 @@ form {
   height: 200px;
 }
 
+.form-group textarea.error {
+  border: 1px solid var(--red);
+}
+
+[type="time"] {
+  font-family: 'Raleway', sans-serif;
+  font-weight: lighter;
+  padding: .4rem .625rem !important;
+}
+
+.form-group-2 input.error,
+.form-group-4 input.error {
+  border-bottom: 1px solid var(--red);
+}
+
+[disabled] {
+  border: 1px solid var(--white);
+  color: var(--white);
+  background: var(--dark-gray);
+  cursor: not-allowed;
+}
+
+[disabled]::before,
+[disabled]::after {
+  background: transparent;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
 label {
   font-size: .725rem;
   position: absolute;
@@ -77,17 +109,17 @@ label.textarea {
 }
 
 .cancel {
-  border: 1px solid #f00;
-  color: #f00;
+  border: 1px solid #f00 !important;
+  color: #f00 !important;
 }
 
 .cancel:hover {
-  color: var(--dirty-white);
+  color: var(--dirty-white) !important;
 }
 
 .cancel::before,
 .cancel::after {
-  background: #f00;
+  background: #f00 !important;
 }
 
 @media only screen and (max-width: 767px) {

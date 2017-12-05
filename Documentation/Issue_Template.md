@@ -1,9 +1,28 @@
 # Issue - "Title of the issue #number"
 
-## I found that bug / That's something that can be improved
+### Prerequisites
 
-Description of the bug / That thing can be improved.
+* [ ] Have you installed `node modules`? To do that run `npm install`.
+* [ ] Can you reproduce the problem in safe mode?
+* [ ] Are you running the latest version?
 
-## Fix of the bug / How to improve
+## Description of the issue
 
-Description of the fix / Description of how to improve.
+Put here the description of the issue
+
+## How to reproduce it
+
+Explain how to reproduce the issue step-by-step.
+1. (First Step)
+2. (Second Step)
+3. (Third Step)
+
+... and so on.
+
+*Expected behavior:* (What you expected to happen)
+
+*Actual behavior:* (What actually happened)
+
+## How to fix it
+
+Explain how to fix the issue.
