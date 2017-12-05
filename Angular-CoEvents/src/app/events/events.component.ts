@@ -57,7 +57,7 @@ export class EventsComponent implements OnInit {
     this.onGetDay();
     this.onGetDashTagLoadEvents(this.today);
     this.firstLoad = true;
-    this.eventsHandler.getUser().subscribe(user => this.userLogged = user);
+    this.userLogged = this.eventsHandler.getStaticUser();
   }
 
   onGetDay() {
@@ -90,7 +90,7 @@ export class EventsComponent implements OnInit {
               eventMonthStart = events[event].dateStart.date.month,
               eventDayEnd     = events[event].dateEnd.date.day,
               eventMonthEnd   = events[event].dateEnd.date.month,
-              dateIsBetween   = eventDayStart >= dateDay && dateDay <= eventDayEnd,
+              dateIsBetween   = eventDayStart >= dateDay || dateDay <= eventDayEnd,
               eventMonth      = eventMonthStart >= dateMonth || dateMonth <= eventMonthEnd,
               dateInRange     = dateIsBetween && eventMonth;
 

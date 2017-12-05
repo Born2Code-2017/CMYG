@@ -1,6 +1,6 @@
 <aside id="menu">
   <div class="menu-logo">
-    <a routerLink="/">
+    <a routerLink="/" (click)="openMenuMobile()">
       <h1>
         <span>CoEvents</span>
       </h1>
@@ -20,29 +20,29 @@
              aria-hidden="true"></i> Events
           <ul class="fa-ul nav-sm"
               [ngClass]="{'active': isActive === 1}">
-            <li class="nav-sm_smv">
+            <li class="nav-sm_smv" (click)="openMenuMobile()">
               <i class="fa fa-fw fa-calendar-plus-o"
                  aria-hidden="true"></i>
               <a routerLink="/new-event">New Event</a>
             </li>
-            <li class="nav-sm_smv">
+            <li class="nav-sm_smv" (click)="openMenuMobile()">
               <i class="fa fa-fw fa-calendar"
                  aria-hidden="true"></i>
               <a routerLink="/events">All Events</a>
             </li>
-            <li class="nav-sm_smv">
+            <li class="nav-sm_smv" (click)="openMenuMobile()">
               <i class="fa fa-fw fa-calendar-check-o"
                  aria-hidden="true"></i>
               <a routerLink="/profile">My Events</a>
             </li>
           </ul>
         </li>
-        <li class="nav-mv">
+        <li class="nav-mv" (click)="openMenuMobile()">
           <i class="fa fa-fw fa-user"
              aria-hidden="true"></i>
           <a routerLink="/profile">Profile</a>
         </li>
-        <li class="nav-mv">
+        <li class="nav-mv" (click)="openMenuMobile()">
           <i class="fa fa-fw fa-building"
              aria-hidden="true"></i>
           <a routerLink="/company">Company</a>

@@ -1,18 +1,19 @@
 import { Component, HostBinding, HostListener, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ManagerDBModule } from '../shared/_services/dbManager.service';
-import { routerTransition } from '../router.animations';
+import { slideToTop } from '../router.animations';
+import { EventsHandler } from '../shared/_services/eventsHandler.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  animations: [routerTransition]
+  animations: [slideToTop]
 })
 
 export class LoginComponent implements OnInit {
 
-  @HostBinding('@routerTransition') routerTransition;
+  @HostBinding('@slideToTop') slideToTop;
 
   users;
   _username: string;
@@ -47,6 +48,7 @@ export class LoginComponent implements OnInit {
   lblPass: number;
 
   constructor(private managerDB: ManagerDBModule,
+              private eventsHandler: EventsHandler,
               private router: Router) {
     this.username = '';
     this.password = '';
@@ -79,6 +81,7 @@ export class LoginComponent implements OnInit {
           this.checkbox === false ?
             sessionStorage.setItem('loggedUser', JSON.stringify(u)) :
             localStorage.setItem('loggedUser', JSON.stringify(u));
+          this.eventsHandler.setUser(u.username);
           this.router.navigateByUrl('/dashboard').then();
           break;
         } else {

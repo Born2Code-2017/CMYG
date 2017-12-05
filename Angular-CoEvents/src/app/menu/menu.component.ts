@@ -1,13 +1,17 @@
-import { AfterContentInit, Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EventsHandler } from '../shared/_services/eventsHandler.service';
+import { slideToRight } from '../router.animations';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
+  styleUrls: ['./menu.component.css'],
+  animations: [slideToRight]
 })
-export class MenuComponent implements OnInit, AfterContentInit {
+export class MenuComponent implements OnInit {
+
+  @HostBinding('@slideToRight') slideToRight;
 
   loggedUser: string;
   hambClicked: boolean;
@@ -18,18 +22,8 @@ export class MenuComponent implements OnInit, AfterContentInit {
     this.hambClicked = false;
   }
 
-  ngOnInit() { }
-
-  ngAfterContentInit() {
-    if (sessionStorage.getItem('loggedUser')) {
-      const JSONUser = JSON.parse(sessionStorage.getItem('loggedUser'));
-      this.loggedUser = 'Welcome ' + JSONUser.username;
-      this.eventsHandler.setUser(JSONUser.username);
-    } else {
-      const JSONUser = JSON.parse(localStorage.getItem('loggedUser'));
-      this.loggedUser = 'Welcome ' + JSONUser.username;
-      this.eventsHandler.setUser(JSONUser.username);
-    }
+  ngOnInit() {
+    this.loggedUser = 'Welcome ' + this.eventsHandler.getStaticUser();
   }
 
   openMenuMobile() {
@@ -39,10 +33,9 @@ export class MenuComponent implements OnInit, AfterContentInit {
   doLogOut() {
     sessionStorage.removeItem('loggedUser');
     localStorage.removeItem('loggedUser');
-    this.router.navigateByUrl('/login').then(() => {
-      sessionStorage.removeItem('loggedUser');
-      localStorage.removeItem('loggedUser');
-    });
+    this.eventsHandler.setUser(undefined);
+
+    this.router.navigate(['/login']).then();
   }
 
 }

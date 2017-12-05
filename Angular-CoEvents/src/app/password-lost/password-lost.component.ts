@@ -1,18 +1,18 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ManagerDBModule } from '../shared/_services/dbManager.service';
-import { routerTransition } from '../router.animations';
+import { slideToTop } from '../router.animations';
 
 @Component({
   selector: 'app-password-lost',
   templateUrl: './password-lost.component.html',
   styleUrls: ['./password-lost.component.css'],
-  animations: [routerTransition]
+  animations: [slideToTop]
 })
 
 export class PasswordLostComponent implements OnInit {
 
-  @HostBinding('@routerTransition') routerTransition;
+  @HostBinding('@slideToTop') slideToTop;
 
   users;
   email: string;

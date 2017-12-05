@@ -155,11 +155,13 @@
     background: var(--dark-gray-o);
     padding: 1.5rem !important;
     right: -100%;
+    visibility: hidden;
     font-size: 1.75rem;
   }
 
   .menu-nav.opened{
     right: 0;
+    visibility: visible;
   }
 
   .fa-bell-o{

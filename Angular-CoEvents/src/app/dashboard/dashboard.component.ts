@@ -1,18 +1,18 @@
 import { Component, HostBinding, HostListener, OnInit, Output } from '@angular/core';
 import { EventsHandler } from '../shared/_services/eventsHandler.service';
 import { NewEventGuard } from '../shared/_services/eventGuard.service';
-import { routerTransition } from '../router.animations';
+import { slideToTop } from '../router.animations';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
-  animations: [routerTransition]
+  animations: [slideToTop]
 })
 
 export class DashboardComponent implements OnInit {
 
-  @HostBinding('@routerTransition') routerTransition;
+  @HostBinding('@slideToTop') slideToTop;
 
   tagsOfToday;
   tags;

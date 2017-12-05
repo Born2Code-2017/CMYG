@@ -9,6 +9,7 @@ export class EventsHandler {
   tags: Subject<object[]> = new Subject();
   dashTagFilter: Subject<string> = new Subject();
   loggedUser: Subject<string> = new Subject();
+  staticUser: string;
   editEvent: object;
 
   constructor() { }
@@ -39,10 +40,19 @@ export class EventsHandler {
 
   setUser(user) {
     this.loggedUser.next(user);
+    this.setStaticUser(user);
   }
 
   getUser(): Observable<string> {
     return this.loggedUser.asObservable();
+  }
+
+  setStaticUser(user) {
+    this.staticUser = user;
+  }
+
+  getStaticUser() {
+    return this.staticUser;
   }
 
   setEditEvent(event) {

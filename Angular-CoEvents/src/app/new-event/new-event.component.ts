@@ -6,18 +6,18 @@ import { NewEventGuard } from '../shared/_services/eventGuard.service';
 import { EventsHandler } from '../shared/_services/eventsHandler.service';
 
 import { INgxMyDpOptions } from 'ngx-mydatepicker';
-import { routerTransition } from '../router.animations';
+import { slideToTop } from '../router.animations';
 
 @Component({
   selector: 'app-new-event',
   templateUrl: './new-event.component.html',
   styleUrls: ['./new-event.component.css'],
-  animations: [routerTransition]
+  animations: [slideToTop]
 })
 
 export class NewEventComponent implements OnInit {
 
-  @HostBinding('@routerTransition') routerTransition;
+  @HostBinding('@slideToTop') slideToTop;
 
   h2: string;
   btnSend: string;
