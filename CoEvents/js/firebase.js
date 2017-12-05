@@ -43,13 +43,12 @@ let databaseMng = {
           method: "GET",
           contentType: "application/json"
         }).done(databaseMng.onLoadSuccess).fail(databaseMng.onError);
-        break;
+        break
     }
   },
 
   onLoginSuccess: function (dbData) {
     databaseMng.users = dbData;
-    console.log(databaseMng.users);
     databaseMng.onSuccessCallback();
   },
 

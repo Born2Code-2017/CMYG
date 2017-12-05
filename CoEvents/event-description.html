@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Dashboard - CoEvents</title>
+  <meta name="description" content="Dashboard, seleziona gli eventi per categoria o per giornate, seleziona l'evento che più ti attira">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="apple-touch-icon" sizes="180x180" href="./img/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon/favicon-16x16.png">
+  <link rel="manifest" href="./img/favicon/manifest.json">
+  <link rel="mask-icon" href="./img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="./img/favicon/favicon.ico">
+  <meta name="msapplication-config" content="./img/favicon/browserconfig.xml">
+  <meta name="theme-color" content="#2facb2">
+</head>
+<body>
+    <aside id="menu">
+        <div class="menu-logo">
+            <h1><span>CoEvents</span></h1>
+        </div>
+        <div class="menu-hamb">
+            <span class="line line-1"></span>
+            <span class="line line-2"></span>
+            <span class="line line-3"></span>
+        </div>
+        <div class="menu-nav">
+            <div id="loggedUser">
+                <p></p>
+            </div>
+            <nav class="nav">
+            <ul class="fa-ul">
+                <li class="nav-mv"><i class="fa fa-fw fa-user" aria-hidden="true"></i><a href="profile.html">Profile</a></li>
+                <li class="nav-mv events">
+                <i class="fa fa-fw fa-calendar-o" aria-hidden="true"></i>Events
+                <ul class="fa-ul nav-sm">
+                    <li class="nav-sm_smv">
+                    <i class="fa fa-fw fa-calendar" aria-hidden="true"></i><a href="events.html">All Events</a>
+                    </li>
+                    <li class="nav-sm_smv">
+                    <i class="fa fa-fw fa-calendar-check-o" aria-hidden="true"></i><a href="profile.html">My Events</a>
+                    </li>
+                    <li class="nav-sm_smv">
+                    <i class="fa fa-fw fa-calendar-plus-o" aria-hidden="true"></i><a href="new-event.html">New Event</a>
+                    </li>
+                </ul>
+                </li>
+                <li class="nav-mv"><i class="fa fa-fw fa-building" aria-hidden="true"></i><a href="company.html">Company</a></li>
+            </ul>
+            </nav>
+            <div class="menu-action">
+            <i class="fa fa-lg fa-fw fa-bell-o" aria-hidden="true"></i>
+            <i class="fa fa-lg fa-fw fa-sign-out" aria-hidden="true"></i>
+            </div>
+        </div>
+    </aside>
+    
+    <main id = "description">
+        <section id = "info-block">
+            <div id = "event-image"></div>
+            <div id = "description-event">
+                <h3 class = "description-title">Next Revolution Roadshow - Roma (sessione Aziende)</h3>
+                <h4 class = "">Descrizione</h4>
+                <p class = "description-text">Non hai ancora sentito parlare di GDPR o sei alla ricerca di una soluzione per la tua 
+                    zienda? Vuoi scoprire i trend che rivoluzioneranno il mercato nei prossimi 5 anni? Vuoi capire come gestire in 
+                    tempo reale la tua azienda?</p>
+                <p>Partecipa al Next Revolution Summit 2018! Un’occasione unica; 3 ore durante le quali Intel, Lenovo e Sap offriranno 
+                    ai partecipanti la loro visione e chiave di lettura su tematiche come GDPR, trasformazione digitale, Industry 4.0 e 
+                    gestione dell’azienda in tempo reale.</p>
+                <p>L’incontro è indirizzato ai CEO, CIO, CTO, CFO, COO, IT Manager e responsabili acquisti delle aziende finali.
+                    Il summit ospiterà speaker di Intel, Lenovo, SAP e Suse oltre ad accreditati professionisti esperti a livello nazionale 
+                    in materia GDPR. I partecipanti potranno interagire ponendo domande relative ai propri scenari aziendali.</p>
+            </div>
+        </section>
+        
+        <aside id = "description-right">
+            <div id = "organizator">
+                <div class = "photo-org"></div>
+                <span class = "org">Michele Ponti</span>
+                <span class = "org">Direttore della Communicazione</span>
+            </div>
+            <div id = "description-form">
+                <div class = "form-group hide">
+                    <button type = "submit" id = "join">Partecipo</button>
+                </div>
+                <div class = "form-group hide">
+                    <button type = "submit" id = "interested">Mi interessa</button>
+                </div>
+                <div class = "form-group hide">
+                    <button type = "submit" id = "no-join">Non partecipo</button>
+                </div>
+            </div>
+            <div class = "event-info">
+                <div class = "members">
+                    <h4> <i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Data e ora</h4>
+                    <p></p>
+                    <h4><i class="fa fa-fw fa-globe" aria-hidden="true"></i> Località</h4>
+                    <a href = "#"></a>
+                </div>
+                <div class = "event-people">
+                    <h4><i class="fa fa-fw fa-user" aria-hidden="true"></i> Partecipanti</h4>
+                </div>
+            </div>
+        </aside>
+        <div id = "hide-buttons">
+            <div class = "form-circle">
+                <button type = "submit" id = "previous"><i class="fa fa-2x fa-calendar" aria-hidden="true"></i></button>
+            </div>
+            <div class = "form-circle sh">
+                <button type = "submit" id = "show"><i class="fa fa-2x fa-chevron-left" aria-hidden="true"></i></i></button>
+            </div>
+        </div>
+    </main>
+
+    <link href="https://fonts.googleapis.com/css?family=Oxygen:300,400,700|Raleway:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://use.fontawesome.com/2d4722d32d.js" async defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./js/utils/imageloaded.min.js"></script>
+    <script src="./js/utils/imagefill.min.js"></script>
+    <script src="./js/firebase.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>
