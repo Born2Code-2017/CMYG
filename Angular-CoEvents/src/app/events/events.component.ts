@@ -58,14 +58,12 @@ export class EventsComponent implements OnInit {
     }, err => console.log('Something wrong in the subscribe of the getEvents: ', err.status));
 
     this.onGetDay();
-    this.onGetDashTagLoadEvents(this.today);
     this.firstLoad = true;
     this.userLogged = this.eventsHandler.getStaticUser();
   }
 
   onGetDay() {
     this.listEvents = [];
-
     this.eventsHandler.getDay().subscribe(date => {
       this.managerDB.getEvents().subscribe(events => {
         this.firstLoad = false;
@@ -148,18 +146,21 @@ export class EventsComponent implements OnInit {
     this.eventShowed = [];
     for (const event in events) {
       if (events.hasOwnProperty(event)) {
-        const splittedDate    = date.split('-', 3),
-              dateDay         = parseInt(splittedDate[2], 10),
-              dateMonth       = parseInt(splittedDate[1], 10),
-              eventDayStart   = events[event].dateStart.date.day,
-              eventMonthStart = events[event].dateStart.date.month,
-              eventDayEnd     = events[event].dateEnd.date.day,
-              eventMonthEnd   = events[event].dateEnd.date.month,
-              dateIsBetween   = eventDayStart >= dateDay && dateDay <= eventDayEnd,
-              eventMonth      = eventMonthStart >= dateMonth || dateMonth <= eventMonthEnd,
-              dateInRange     = dateIsBetween && eventMonth;
+        const eventDateStart = events[event].dateStart.formatted,
+              eventDateEnd   = events[event].dateEnd.formatted,
+              splittedDate   = date.split('-', 3);
+        let dayOfDate = null;
 
-        if (dateInRange) {
+        if (parseInt(splittedDate[2], 10) < 10) {
+          dayOfDate = '0' + splittedDate[2];
+        } else {
+          dayOfDate = splittedDate[2];
+        }
+
+        const newDate = splittedDate[0] + '-' + splittedDate[1] + '-' + dayOfDate;
+
+
+        if (eventDateStart === date || eventDateEnd === date || (newDate >= eventDateStart && newDate <= eventDateEnd)) {
           if (tag === events[event].tags || tag === 'all') {
             events[event].id = event;
             this.eventShowed.push(events[event]);
@@ -167,7 +168,7 @@ export class EventsComponent implements OnInit {
         }
       }
     }
-    this.eventShowed = lodash.sortBy(this.eventShowed, ['name', 'dateStart.formatted', 'dateEnd.formatted', 'name']);
+    this.eventShowed = lodash.sortBy(this.eventShowed, ['dateStart.formatted', 'dateEnd.formatted', 'name']);
   }
 
   sendTags() {

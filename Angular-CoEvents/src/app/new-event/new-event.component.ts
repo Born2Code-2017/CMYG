@@ -33,6 +33,8 @@ export class NewEventComponent implements OnInit {
   // Dates
   eventDateStart: object;
   eventDateEnd: object;
+  leadingZeroToday: string;
+  leadingZeroTomorrow: string;
 
   // Arrays
   arrayImages: object[];
@@ -87,13 +89,21 @@ export class NewEventComponent implements OnInit {
       err => console.log('Error into Tag subscribe in new Event', err.status)
     );
 
+    if (this.dayOfToday < 10) {
+      this.leadingZeroToday = '0';
+    }
+
+    if (this.dayOfTomoz < 10) {
+      this.leadingZeroTomorrow = '0';
+    }
+
     this.eventDateStart = {
       date: {
         year: this.yearOfToday,
         month: this.monthOfToday,
         day: this.dayOfToday
       },
-      formatted: this.yearOfToday + '-' + this.monthOfToday + '-' + this.dayOfToday
+      formatted: this.yearOfToday + '-' + this.monthOfToday + '-' + this.leadingZeroToday + this.dayOfToday
     };
 
     this.eventDateEnd = {
@@ -102,12 +112,10 @@ export class NewEventComponent implements OnInit {
         month: this.monthOfTomoz,
         day: this.dayOfTomoz
       },
-      formatted: this.yearOfTomoz + '-' + this.monthOfTomoz + '-' + this.dayOfTomoz
+      formatted: this.yearOfTomoz + '-' + this.monthOfTomoz + '-' + this.leadingZeroTomorrow + this.dayOfTomoz
     };
 
-    this.eventsHandler.getUser().subscribe(user => {
-      this.loggedUser = user;
-    });
+    this.loggedUser = this.eventsHandler.getStaticUser();
 
     if (this.router.url === '/new-event') {
       this.currentEvent = {
@@ -169,7 +177,7 @@ export class NewEventComponent implements OnInit {
       .replace(/ò/g, 'o')
       .replace(/ù/g, 'u')
       .toLowerCase();
-    console.log(this.currentEvent.url);
+    // console.log(this.currentEvent.url);
   }
 
   sendEventToDB() {

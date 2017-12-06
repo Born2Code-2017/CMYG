@@ -1,4 +1,4 @@
-import { Component, HostBinding, HostListener, OnInit, Output } from '@angular/core';
+import { Component, HostBinding, OnInit, Output } from '@angular/core';
 import { EventsHandler } from '../shared/_services/eventsHandler.service';
 import { NewEventGuard } from '../shared/_services/eventGuard.service';
 import { slideToTop } from '../router.animations';
@@ -48,7 +48,13 @@ export class DashboardComponent implements OnInit {
 
   onGetDay() {
     this.eventsHandler.getDay().subscribe(date => {
-      const d = date.split('-', 3);
+      const d      = date.split('-', 3),
+            tmpDay = parseInt(d[2], 10);
+
+      if (tmpDay < 10) {
+        d[2] = '0' + d[2];
+      }
+
       this.todayEvents = d[2] + '/' + d[1] + ' events';
       this.tagsOfToday = [];
 
