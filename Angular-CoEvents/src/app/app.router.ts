@@ -8,6 +8,8 @@ import { NewEventGuard } from './shared/_services/eventGuard.service';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NewEventComponent } from './new-event/new-event.component';
+import { EventDetailsComponent } from './event-details/event-details.component';
+import { AllEventsComponent } from './all-events/all-events.component';
 
 const appRoutes: Routes = [
   {
@@ -28,6 +30,9 @@ const appRoutes: Routes = [
     path: 'profile',
     component: ProfileComponent
   }, {
+    path: 'events',
+    component: AllEventsComponent
+  }, {
     path: 'new-event',
     component: NewEventComponent,
     canDeactivate: [NewEventGuard]
@@ -35,6 +40,9 @@ const appRoutes: Routes = [
     path: 'edit-event/:url',
     component: NewEventComponent,
     canDeactivate: [NewEventGuard]
+  }, {
+    path: 'event/:url',
+    component: EventDetailsComponent
   }
 ];
 

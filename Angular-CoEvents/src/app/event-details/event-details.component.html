@@ -1,0 +1,92 @@
+<main id="description">
+  <section id="details">
+    <header [style.backgroundImage]="eventPathImg"></header>
+    <div class="content">
+      <div class="hidden">
+        <div class="user">
+          <img [src]="avatarImg" alt="Avatar of {{currentEvent?.owner}}">
+          <p>Owner</p>
+          <p><b>{{currentEvent?.owner}}</b></p>
+          <p *ngIf="sameUser">
+            <i class="fa fa-pencil"
+               aria-hidden="true"
+               (click)="editEvent(currentEvent, currentEvent.url)"></i>
+            <i class="fa fa-trash"
+               aria-hidden="true"
+               (click)="deleteEvent(id)"></i>
+          </p>
+        </div>
+        <hr>
+        <div class="event-info">
+          <p class="title">
+            <i class="fa fa-calendar" aria-hidden="true"></i>
+            <b>{{currentEvent?.name}}</b>
+          </p>
+          <p>
+            <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+            Date start: {{currentEvent?.dateStart.formatted | date:'dd/M/y'}}
+            <br>
+            <i class="fa fa-clock-o" aria-hidden="true"></i>
+            Time start: {{currentEvent?.timeStart}}
+            <br>
+            <i class="fa fa-calendar-times-o" aria-hidden="true"></i>
+            Date end: {{currentEvent?.dateEnd.formatted | date:'dd/M/y'}}
+            <br>
+            <i class="fa fa-clock-o" aria-hidden="true"></i>
+            Time end: {{currentEvent?.timeEnd}}
+          </p>
+          <p>
+            <i class="fa fa-map-marker" aria-hidden="true"></i>
+            {{currentEvent?.location}}
+          </p>
+        </div>
+      </div>
+      <h2>{{currentEvent?.name}}</h2>
+      <p [innerHTML]="currentEvent?.description"></p>
+      <p>#{{currentEvent?.tags}}</p>
+    </div>
+  </section>
+  <aside>
+    <div class="user">
+      <img [src]="avatarImg" alt="Avatar of {{currentEvent?.owner}}">
+      <p>Owner</p>
+      <p><b>{{currentEvent?.owner}}</b></p>
+      <p *ngIf="sameUser">
+        <i class="fa fa-pencil"
+           aria-hidden="true"
+           (click)="editEvent(currentEvent, currentEvent.url)"></i>
+        <i class="fa fa-trash"
+           aria-hidden="true"
+           (click)="deleteEvent(id)"></i>
+      </p>
+    </div>
+    <div class="btn-group">
+      <button [disabled]="sameUser || alreadyPart" (click)="goingToEvent()">I'm Going</button>
+      <button [disabled]="sameUser || alreadyPart">I'm Interested</button>
+      <button [disabled]="sameUser">I'm not going</button>
+    </div>
+    <div class="event-info">
+      <p class="title">
+        <i class="fa fa-calendar" aria-hidden="true"></i>
+        <b>{{currentEvent?.name}}</b>
+      </p>
+      <p>
+        <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+        Date start: {{currentEvent?.dateStart.formatted | date:'dd/M/y'}}
+        <br>
+        <i class="fa fa-clock-o" aria-hidden="true"></i>
+        Time start: {{currentEvent?.timeStart}}
+        <br>
+        <i class="fa fa-calendar-times-o" aria-hidden="true"></i>
+        Date end: {{currentEvent?.dateEnd.formatted | date:'dd/M/y'}}
+        <br>
+        <i class="fa fa-clock-o" aria-hidden="true"></i>
+        Time end: {{currentEvent?.timeEnd}}
+      </p>
+      <p>
+        <i class="fa fa-map-marker" aria-hidden="true"></i>
+        {{currentEvent?.location}}
+      </p>
+    </div>
+  </aside>
+</main>

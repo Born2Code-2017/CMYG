@@ -1,8 +1,8 @@
 export class Event {
   name: string;
   location: string;
-  dateStart: string;
-  dateEnd: string;
+  dateStart: object;
+  dateEnd: object;
   timeStart: string;
   timeEnd: string;
   imgPath: string;

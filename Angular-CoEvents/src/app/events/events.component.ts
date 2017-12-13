@@ -53,6 +53,7 @@ export class EventsComponent implements OnInit {
       this.managerDB.getTags().subscribe(tags => {
         this.tagsList = tags;
         this.onInitLoadEvents(this.today, this.listEvents, this.tagsList);
+        this.onGetDashTagLoadEvents(this.today);
         this.sendTags();
       }, err => console.log('Something wrong in the subscribe of the getTags: ', err.status));
     }, err => console.log('Something wrong in the subscribe of the getEvents: ', err.status));
@@ -92,7 +93,7 @@ export class EventsComponent implements OnInit {
               eventDayEnd     = events[event].dateEnd.date.day,
               eventMonthEnd   = events[event].dateEnd.date.month,
               dateIsBetween   = eventDayStart >= dateDay || dateDay <= eventDayEnd,
-              eventMonth      = eventMonthStart >= dateMonth || dateMonth <= eventMonthEnd,
+              eventMonth      = eventMonthStart >= dateMonth && dateMonth <= eventMonthEnd,
               dateInRange     = dateIsBetween && eventMonth;
 
         if (dateInRange) {

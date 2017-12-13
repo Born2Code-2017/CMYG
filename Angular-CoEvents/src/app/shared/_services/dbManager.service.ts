@@ -48,6 +48,16 @@ export class ManagerDBModule {
     return this.http.patch(url, event);
   }
 
+  addPartecipant(id, partecipants) {
+    const url = this.apiUrl + 'events/' + id + '/partecipants.json';
+    return this.http.patch(url, partecipants);
+  }
+
+  getSingleEvent(eventUrl) {
+    const url = this.apiUrl + 'events.json?orderBy=\"url\"&startAt=\"' + eventUrl + '\"&endAt=\"' + eventUrl + '\"';
+    return this.http.get(url);
+  }
+
   isUserLogged() {
     if (sessionStorage.getItem('loggedUser') || localStorage.getItem('loggedUser')) {
       return true;

@@ -1,0 +1,124 @@
+#description {
+  position: absolute;
+  overflow-y: scroll;
+  width: calc(100% - 250px);
+  height: 100%;
+  right: 0;
+  margin: 0;
+}
+
+aside{
+  position: fixed;
+  width: 300px;
+  top: 0;
+  right: 0;
+  background: var(--dirty-white);
+  color: var(--dark-gray);
+  padding: 2rem;
+  height: 100%;
+}
+
+section{
+  position: relative;
+  width: calc(100% - 300px);
+  min-height: 100%;
+  float: left;
+}
+
+header{
+  width: 100%;
+  height: 40vh;
+  background: center center no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.hidden,
+header h2{
+  display: none;
+}
+
+p{
+  color: var(--sea-green);
+}
+
+.content{
+  padding: 2rem;
+  position: relative;
+}
+
+button{
+  margin: .625rem 0;
+}
+
+.user,
+.btn-group,
+.event-info{
+  width: 100%;
+  float: left;
+}
+
+.user p{
+  color: var(--dark-gray);
+  margin: .2rem 0;
+  width: calc(100% - (80px + .630rem));
+  float: right;
+}
+
+.user img{
+  float: left;
+  border-radius: 50%;
+  margin: 0 .315rem;
+  width: 80px;
+  height: 80px;
+}
+
+.btn-group{
+  margin: .625rem 0;
+}
+
+.event-info p{
+  color: var(--dark-gray);
+  font-size: 1.125rem;
+}
+
+.event-info .title{
+  font-size: 1.25rem;
+}
+
+[disabled] {
+  border: 1px solid var(--white);
+  color: var(--white);
+  background: var(--dark-gray);
+  cursor: not-allowed;
+}
+
+[disabled]::before,
+[disabled]::after {
+  background: transparent;
+}
+
+@media only screen and (max-width: 767px){
+  #description{
+    width: 100%;
+  }
+
+  section{
+    width: 100%;
+  }
+
+  .user,
+  .event-info{
+    width: 100%;
+    float: none;
+    overflow: hidden;
+  }
+
+  .hidden{
+    display: block;
+  }
+
+  aside{
+    display: none;
+  }
+}

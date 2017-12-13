@@ -15,43 +15,52 @@
     </div>
     <nav class="nav">
       <ul class="fa-ul">
-        <li class="nav-mv events" appMenu>
-          <i class="fa fa-fw fa-calendar-o"
-             aria-hidden="true"></i> Events
-          <ul class="fa-ul nav-sm"
-              [ngClass]="{'active': isActive === 1}">
-            <li class="nav-sm_smv" (click)="openMenuMobile()">
-              <i class="fa fa-fw fa-calendar-plus-o"
-                 aria-hidden="true"></i>
-              <a routerLink="/new-event">New Event</a>
-            </li>
-            <li class="nav-sm_smv" (click)="openMenuMobile()">
-              <i class="fa fa-fw fa-calendar"
-                 aria-hidden="true"></i>
-              <a routerLink="/events">All Events</a>
-            </li>
-            <li class="nav-sm_smv" (click)="openMenuMobile()">
-              <i class="fa fa-fw fa-calendar-check-o"
-                 aria-hidden="true"></i>
-              <a routerLink="/profile">My Events</a>
-            </li>
-          </ul>
+        <li class="nav-mv" (click)="openMenuMobile()">
+          <i class="fa fa-tachometer" aria-hidden="true"></i>
+          <a routerLink="/dashboard">Dashboard</a>
         </li>
         <li class="nav-mv" (click)="openMenuMobile()">
-          <i class="fa fa-fw fa-user"
-             aria-hidden="true"></i>
-          <a routerLink="/profile">Profile</a>
+          <i class="fa fa-fw fa-calendar-plus-o"
+          aria-hidden="true"></i>
+          <a routerLink="/new-event">New Event</a>
         </li>
-        <li class="nav-mv" (click)="openMenuMobile()">
-          <i class="fa fa-fw fa-building"
-             aria-hidden="true"></i>
-          <a routerLink="/company">Company</a>
-        </li>
+        <!--<li class="nav-mv events" appMenu>-->
+          <!--<i class="fa fa-fw fa-calendar-o"-->
+             <!--aria-hidden="true"></i> Events-->
+          <!--<ul class="fa-ul nav-sm"-->
+              <!--[ngClass]="{'active': isActive === 1}">-->
+            <!--<li class="nav-sm_smv" (click)="openMenuMobile()">-->
+              <!--<i class="fa fa-fw fa-calendar-plus-o"-->
+                 <!--aria-hidden="true"></i>-->
+              <!--<a routerLink="/new-event">New Event</a>-->
+            <!--</li>-->
+            <!--<li class="nav-sm_smv" (click)="openMenuMobile()">-->
+              <!--<i class="fa fa-fw fa-calendar"-->
+                 <!--aria-hidden="true"></i>-->
+              <!--<a routerLink="/events">All Events</a>-->
+            <!--</li>-->
+            <!--<li class="nav-sm_smv" (click)="openMenuMobile()">-->
+              <!--<i class="fa fa-fw fa-calendar-check-o"-->
+                 <!--aria-hidden="true"></i>-->
+              <!--<a routerLink="/profile">My Events</a>-->
+            <!--</li>-->
+          <!--</ul>-->
+        <!--</li>-->
+        <!--<li class="nav-mv" (click)="openMenuMobile()">-->
+          <!--<i class="fa fa-fw fa-user"-->
+             <!--aria-hidden="true"></i>-->
+          <!--<a routerLink="/profile">Profile</a>-->
+        <!--</li>-->
+        <!--<li class="nav-mv" (click)="openMenuMobile()">-->
+          <!--<i class="fa fa-fw fa-building"-->
+             <!--aria-hidden="true"></i>-->
+          <!--<a routerLink="/company">Company</a>-->
+        <!--</li>-->
       </ul>
     </nav>
     <div class="menu-action">
-      <i class="fa fa-lg fa-fw fa-bell-o"
-         aria-hidden="true"></i>
+      <!--<i class="fa fa-lg fa-fw fa-bell-o"-->
+         <!--aria-hidden="true"></i>-->
       <i class="fa fa-lg fa-fw fa-sign-out"
          aria-hidden="true"
          (click)="doLogOut()"></i>
