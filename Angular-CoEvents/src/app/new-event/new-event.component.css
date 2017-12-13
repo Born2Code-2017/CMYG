@@ -65,6 +65,7 @@ form {
 input[type="time"] {
   font-family: 'Raleway', sans-serif !important;
   font-weight: lighter !important;
+  padding: .425rem .625rem !important;
 }
 
 .form-group-2 input.error,
