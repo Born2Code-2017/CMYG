@@ -1,0 +1,14 @@
+[
+  {
+    "name": "work",
+    "color": "#f00"
+  },
+  {
+    "name": "party",
+    "color": "#2facb2"
+  },
+  {
+    "name": "random",
+    "color": "#00f"
+  }
+]

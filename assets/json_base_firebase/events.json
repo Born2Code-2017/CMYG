@@ -1,0 +1,160 @@
+{
+  "-L-Dk0Dvcj2rzqjTfrEA": {
+    "dateEnd": {
+      "date": {
+        "day": 6,
+        "month": 12,
+        "year": 2017
+      },
+      "epoc": 1512514800,
+      "formatted": "2017-12-06",
+      "jsdate": "2017-12-05T23:00:00.000Z"
+    },
+    "dateStart": {
+      "date": {
+        "day": 30,
+        "month": 11,
+        "year": 2017
+      },
+      "formatted": "2017-11-30"
+    },
+    "description": "We'll have an awesome course about react.",
+    "imgPath": "sunny.png",
+    "interested": "",
+    "location": "Rome",
+    "name": "React Day baby",
+    "notGoing": "",
+    "owner": "Yulia",
+    "partecipants": "",
+    "tags": "party",
+    "timeEnd": "18:30",
+    "timeStart": "09:30",
+    "url": "react-day-baby"
+  },
+  "-L-GG7IvSITr80nGZ-wE": {
+    "dateEnd": {
+      "date": {
+        "day": 7,
+        "month": 12,
+        "year": 2017
+      },
+      "epoc": 1512601200,
+      "formatted": "2017-12-07",
+      "jsdate": "2017-12-06T23:00:00.000Z"
+    },
+    "dateStart": {
+      "date": {
+        "day": 1,
+        "month": 12,
+        "year": 2017
+      },
+      "formatted": "2017-12-1"
+    },
+    "description": "Welcome to the Jungle!",
+    "imgPath": "sunny.png",
+    "interested": "",
+    "location": "Riccione",
+    "name": "Mi piacciono i DARIO",
+    "notGoing": "",
+    "owner": "Guich",
+    "partecipants": "",
+    "tags": "party",
+    "timeEnd": "18:00",
+    "timeStart": "10:00",
+    "url": "mi-piacciono-i-dario"
+  },
+  "-L-GTeBBDsFnefBpGjFE": {
+    "dateEnd": {
+      "date": {
+        "day": 2,
+        "month": 12,
+        "year": 2017
+      },
+      "formatted": "2017-12-2"
+    },
+    "dateStart": {
+      "date": {
+        "day": 1,
+        "month": 12,
+        "year": 2017
+      },
+      "formatted": "2017-12-1"
+    },
+    "description": "njsladkasdasdasdasd",
+    "imgPath": "sunny.png",
+    "interested": "",
+    "location": "Riccione",
+    "name": "Test Form New Event",
+    "notGoing": "",
+    "owner": "Yulia",
+    "partecipants": "",
+    "tags": "work",
+    "timeEnd": "18:00",
+    "timeStart": "15:00",
+    "url": "test-form-new-event"
+  },
+  "-L-Gaw258FVR9mC_smYb": {
+    "dateEnd": {
+      "date": {
+        "day": 2,
+        "month": 12,
+        "year": 2017
+      },
+      "formatted": "2017-12-2"
+    },
+    "dateStart": {
+      "date": {
+        "day": 1,
+        "month": 12,
+        "year": 2017
+      },
+      "formatted": "2017-12-1"
+    },
+    "description": "Something like an event",
+    "imgPath": "sunny.png",
+    "interested": "",
+    "location": "Riccione",
+    "name": "New Test Event",
+    "notGoing": "",
+    "owner": "Guich",
+    "partecipants": "",
+    "tags": "work",
+    "timeEnd": "14:00",
+    "timeStart": "10:00",
+    "url": "new-test-event"
+  },
+  "-L-Gb39cR-lFQlBtlQ8B": {
+    "dateEnd": {
+      "date": {
+        "day": 9,
+        "month": 12,
+        "year": 2017
+      },
+      "epoc": 1512774000,
+      "formatted": "2017-12-09",
+      "jsdate": "2017-12-08T23:00:00.000Z"
+    },
+    "dateStart": {
+      "date": {
+        "day": 5,
+        "month": 12,
+        "year": 2017
+      },
+      "epoc": 1512428400,
+      "formatted": "2017-12-05",
+      "jsdate": "2017-12-04T23:00:00.000Z"
+    },
+    "description": "jkbasdnlkmasdasda",
+    "imgPath": "events.png",
+    "interested": "",
+    "location": "Milano",
+    "name": "Another thing like that",
+    "notGoing": "",
+    "owner": "Guich",
+    "partecipants": "",
+    "tags": "random",
+    "timeEnd": "10:00",
+    "timeStart": "09:00",
+    "url": "another-thing-like-that"
+  }
+}
