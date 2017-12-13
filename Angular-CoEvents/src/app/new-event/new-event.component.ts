@@ -74,14 +74,32 @@ export class NewEventComponent implements OnInit {
     this.lblTag = false;
 
     this.arrayImages = [{
-      name: 'Event',
-      path: 'events.png'
+      name: 'Meeting',
+      path: 'meeting.jpg'
     }, {
-      name: 'Sunny Day',
-      path: 'sunny.png'
+      name: 'Office Desk',
+      path: 'computer.jpg'
     }, {
-      name: 'Panorama',
-      path: 'panorama.png'
+      name: 'Office',
+      path: 'office.jpg'
+    }, {
+      name: 'Party',
+      path: 'party.jpg'
+    }, {
+      name: 'Bottle of Wine',
+      path: 'wine.jpg'
+    }, {
+      name: 'Lounge Bar',
+      path: 'bar.jpg'
+    }, {
+      name: 'Baloons',
+      path: 'baloons.jpg'
+    }, {
+      name: 'Launch',
+      path: 'launch.jpg'
+    }, {
+      name: 'Celebration',
+      path: 'celebration.jpg'
     }];
 
     this.managerDB.getTags().subscribe(
@@ -149,7 +167,7 @@ export class NewEventComponent implements OnInit {
     } else {
       this.h2 = 'You\'re updating your event';
       this.btnSend = 'Update!';
-      this.btnCancel = 'Go Back without edit';
+      this.btnCancel = 'Back to Dashboard without edit';
     }
   }
 

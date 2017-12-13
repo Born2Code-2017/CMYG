@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
+import { Event } from '../_models/events.model';
 
 @Injectable()
 export class EventsHandler {
@@ -10,7 +11,7 @@ export class EventsHandler {
   dashTagFilter: Subject<string> = new Subject();
   loggedUser: Subject<string> = new Subject();
   staticUser: string;
-  editEvent: object;
+  editEvent: Event;
 
   constructor() { }
 

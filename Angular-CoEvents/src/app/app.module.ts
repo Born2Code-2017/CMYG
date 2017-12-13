@@ -24,6 +24,8 @@ import { CategoryDirective } from './dashboard/category.directive';
 import { TimePipe } from './shared/_pipe/time.pipe';
 import { NewEventComponent } from './new-event/new-event.component';
 import { HeaderComponent } from './header/header.component';
+import { EventDetailsComponent } from './event-details/event-details.component';
+import { AllEventsComponent } from './all-events/all-events.component';
 import { NgxMyDatePickerModule } from 'ngx-mydatepicker';
 
 @NgModule({
@@ -41,7 +43,9 @@ import { NgxMyDatePickerModule } from 'ngx-mydatepicker';
     CategoryDirective,
     TimePipe,
     NewEventComponent,
-    HeaderComponent
+    HeaderComponent,
+    EventDetailsComponent,
+    AllEventsComponent
   ],
   imports: [
     BrowserModule,
