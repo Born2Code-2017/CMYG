@@ -9,7 +9,6 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NewEventComponent } from './new-event/new-event.component';
 import { EventDetailsComponent } from './event-details/event-details.component';
-import { AllEventsComponent } from './all-events/all-events.component';
 
 const appRoutes: Routes = [
   {
@@ -29,9 +28,6 @@ const appRoutes: Routes = [
   }, {
     path: 'profile',
     component: ProfileComponent
-  }, {
-    path: 'events',
-    component: AllEventsComponent
   }, {
     path: 'new-event',
     component: NewEventComponent,
