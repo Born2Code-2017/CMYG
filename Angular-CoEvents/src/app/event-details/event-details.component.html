@@ -24,13 +24,13 @@
           </p>
           <p>
             <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
-            Date start: {{currentEvent?.dateStart.formatted | date:'dd/M/y'}}
+            Date start: {{currentEvent?.dateStart["formatted"] | date:'dd/M/y'}}
             <br>
             <i class="fa fa-clock-o" aria-hidden="true"></i>
             Time start: {{currentEvent?.timeStart}}
             <br>
             <i class="fa fa-calendar-times-o" aria-hidden="true"></i>
-            Date end: {{currentEvent?.dateEnd.formatted | date:'dd/M/y'}}
+            Date end: {{currentEvent?.dateEnd["formatted"] | date:'dd/M/y'}}
             <br>
             <i class="fa fa-clock-o" aria-hidden="true"></i>
             Time end: {{currentEvent?.timeEnd}}
@@ -72,13 +72,13 @@
       </p>
       <p>
         <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
-        Date start: {{currentEvent?.dateStart.formatted | date:'dd/M/y'}}
+        Date start: {{currentEvent?.dateStart["formatted"] | date:'dd/M/y'}}
         <br>
         <i class="fa fa-clock-o" aria-hidden="true"></i>
         Time start: {{currentEvent?.timeStart}}
         <br>
         <i class="fa fa-calendar-times-o" aria-hidden="true"></i>
-        Date end: {{currentEvent?.dateEnd.formatted | date:'dd/M/y'}}
+        Date end: {{currentEvent?.dateEnd["formatted"] | date:'dd/M/y'}}
         <br>
         <i class="fa fa-clock-o" aria-hidden="true"></i>
         Time end: {{currentEvent?.timeEnd}}
