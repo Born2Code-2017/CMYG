@@ -63,6 +63,14 @@ export class NewEventComponent implements OnInit {
     }
   };
 
+  public optionsFroala: Object = {
+    charCounterCount: true,
+    toolbarButtons: ['fullscreen', 'bold', 'italic', 'underline', 'formatOL', 'formatUL'],
+    toolbarButtonsXS: ['fullscreen', 'bold', 'italic', 'underline', 'formatOL', 'formatUL'],
+    toolbarButtonsSM: ['fullscreen', 'bold', 'italic', 'underline', 'formatOL', 'formatUL'],
+    toolbarButtonsMD: ['fullscreen', 'bold', 'italic', 'underline', 'formatOL', 'formatUL'],
+  };
+
   constructor(private managerDB: ManagerDBModule,
               private router: Router,
               private route: ActivatedRoute,

@@ -134,7 +134,8 @@
       <div class="form-group">
         <label for="description"
                class="textarea">Insert the description of the event</label>
-        <textarea name="description"
+        <textarea [froalaEditor]="optionsFroala"
+                  name="description"
                   id="description"
                   #desc="ngModel"
                   placeholder="Insert the description of the event"

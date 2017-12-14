@@ -25,7 +25,9 @@ import { TimePipe } from './shared/_pipe/time.pipe';
 import { NewEventComponent } from './new-event/new-event.component';
 import { HeaderComponent } from './header/header.component';
 import { EventDetailsComponent } from './event-details/event-details.component';
+
 import { NgxMyDatePickerModule } from 'ngx-mydatepicker';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,8 @@ import { NgxMyDatePickerModule } from 'ngx-mydatepicker';
     HttpClientModule,
     FormsModule,
     NgxMyDatePickerModule.forRoot(),
+    FroalaEditorModule.forRoot(),
+    FroalaViewModule.forRoot(),
     routing
   ],
   providers: [

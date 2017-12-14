@@ -10,7 +10,7 @@ export class Event {
   description: string;
   url: string;
   owner: string;
-  partecipants: string;
-  interested: string;
-  notGoing: string;
+  partecipants: object;
+  interested: object;
+  notGoing: object;
 }

@@ -53,6 +53,16 @@ export class ManagerDBModule {
     return this.http.patch(url, partecipants);
   }
 
+  addInterested(id, interested) {
+    const url = this.apiUrl + 'events/' + id + '/interested.json';
+    return this.http.patch(url, interested);
+  }
+
+  addNotGoing(id, notGoing) {
+    const url = this.apiUrl + 'events/' + id + '/notGoing.json';
+    return this.http.patch(url, notGoing);
+  }
+
   getSingleEvent(eventUrl) {
     const url = this.apiUrl + 'events.json?orderBy=\"url\"&startAt=\"' + eventUrl + '\"&endAt=\"' + eventUrl + '\"';
     return this.http.get(url);
