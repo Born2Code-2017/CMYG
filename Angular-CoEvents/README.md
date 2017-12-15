@@ -36,6 +36,10 @@ In the project we're currently using the [ngx-datepicker](https://github.com/kek
 The editor for the description of an event.
 More info and documentation in the official repo on [GitHub](https://github.com/froala/angular-froala-wysiwyg)
 
+***Attention***
+
+Froala needs a license for commercial use, we're using it only as demo purpose only.
+
 #### Lodash
 
 Is a library to sort easily an array of object and more.

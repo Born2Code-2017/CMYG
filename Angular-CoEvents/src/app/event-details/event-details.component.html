@@ -61,9 +61,18 @@
       </p>
     </div>
     <div class="btn-group">
-      <button [disabled]="sameUser || alreadyPart" (click)="goingToEvent()">I'm Going</button>
-      <button [disabled]="sameUser || alreadyPart || alreadyInterested" (click)="interestedToEvent()">I'm Interested</button>
-      <button [disabled]="sameUser || alreadyNotGoing" (click)="notGoingToEvent()">I'm not going</button>
+      <button [disabled]="sameUser || alreadyPart"
+              (click)="goingToEvent()">
+        I'm Going
+      </button>
+      <button [disabled]="sameUser || alreadyPart || alreadyInterested"
+              (click)="interestedToEvent()">
+        I'm Interested
+      </button>
+      <button [disabled]="sameUser || alreadyNotGoing"
+              (click)="notGoingToEvent()">
+        I'm not going
+      </button>
     </div>
     <div class="event-info">
       <p class="title">
@@ -86,6 +95,16 @@
       <p>
         <i class="fa fa-map-marker" aria-hidden="true"></i>
         {{currentEvent?.location}}
+      </p>
+      <p>
+        <i class="fa fa-heart-o"
+           aria-hidden="true"></i> People going: {{nPartecipants}}
+        <br>
+        <i class="fa fa-star-o"
+           aria-hidden="true"></i> People interested: {{nInterested}}
+        <br>
+        <i class="fa fa-ban"
+           aria-hidden="true"></i> People not going: {{nNotGoing}}
       </p>
     </div>
   </aside>

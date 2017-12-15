@@ -48,9 +48,9 @@ export class ManagerDBModule {
     return this.http.patch(url, event);
   }
 
-  addPartecipant(id, partecipants) {
+  addPartecipant(id, partecipant) {
     const url = this.apiUrl + 'events/' + id + '/partecipants.json';
-    return this.http.patch(url, partecipants);
+    return this.http.patch(url, partecipant);
   }
 
   addInterested(id, interested) {
@@ -61,6 +61,11 @@ export class ManagerDBModule {
   addNotGoing(id, notGoing) {
     const url = this.apiUrl + 'events/' + id + '/notGoing.json';
     return this.http.patch(url, notGoing);
+  }
+
+  patchPeople(id, people) {
+    const url = this.apiUrl + 'events/' + id + '.json';
+    return this.http.patch(url, people);
   }
 
   getSingleEvent(eventUrl) {

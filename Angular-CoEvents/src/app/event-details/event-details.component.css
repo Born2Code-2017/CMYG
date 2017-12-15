@@ -98,6 +98,28 @@ button{
   background: transparent;
 }
 
+.fa-pencil,
+.fa-trash {
+  color: var(--blue-sapphire);
+  transition: var(--trans);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.fa-trash {
+  color: var(--dark-gray);
+}
+
+.fa-pencil:hover {
+  color: var(--sea-green);
+  font-size: 1.5rem;
+}
+
+.fa-trash:hover {
+  color: var(--red);
+  font-size: 1.5rem;
+}
+
 @media only screen and (max-width: 767px){
   #description{
     width: 100%;
