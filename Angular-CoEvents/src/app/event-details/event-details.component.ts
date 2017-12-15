@@ -348,4 +348,8 @@ export class EventDetailsComponent implements OnInit {
     });
   }
 
+  goToDash() {
+    this.router.navigate(['/dashboard']).then();
+  }
+
 }

@@ -25,6 +25,7 @@ import { TimePipe } from './shared/_pipe/time.pipe';
 import { NewEventComponent } from './new-event/new-event.component';
 import { HeaderComponent } from './header/header.component';
 import { EventDetailsComponent } from './event-details/event-details.component';
+import { ActionBtnDirective } from './event-details/action-btn.directive';
 
 import { NgxMyDatePickerModule } from 'ngx-mydatepicker';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
@@ -45,7 +46,8 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
     TimePipe,
     NewEventComponent,
     HeaderComponent,
-    EventDetailsComponent
+    EventDetailsComponent,
+    ActionBtnDirective
   ],
   imports: [
     BrowserModule,

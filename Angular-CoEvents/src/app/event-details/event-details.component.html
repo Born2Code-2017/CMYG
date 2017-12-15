@@ -44,6 +44,18 @@
       <h2>{{currentEvent?.name}}</h2>
       <p [innerHTML]="currentEvent?.description"></p>
       <p>#{{currentEvent?.tags}}</p>
+      <div class="hidden">
+        <p>
+          <i class="fa fa-heart-o"
+             aria-hidden="true"></i> People going: {{nPartecipants}}
+          <br>
+          <i class="fa fa-star-o"
+             aria-hidden="true"></i> People interested: {{nInterested}}
+          <br>
+          <i class="fa fa-ban"
+             aria-hidden="true"></i> People not going: {{nNotGoing}}
+        </p>
+      </div>
     </div>
   </section>
   <aside>
@@ -108,4 +120,33 @@
       </p>
     </div>
   </aside>
+  <button class="dashboard"
+          (click)="goToDash()">
+    <i class="fa fa-angle-double-left"
+       aria-hidden="true"></i>
+  </button>
+  <div class="btn-group-md" appActionBtn>
+    <button class="openBtn">
+      <i class="fa fa-plus"
+         aria-hidden="true"></i>
+    </button>
+    <button class="partecipate"
+            [disabled]="sameUser || alreadyPart"
+            (click)="goingToEvent()">
+      <i class="fa fa-heart-o"
+         aria-hidden="true"></i>
+    </button>
+    <button class="interested"
+            [disabled]="sameUser ||alreadyPart || alreadyInterested"
+            (click)="interestedToEvent()">
+      <i class="fa fa-star-o"
+         aria-hidden="true"></i>
+    </button>
+    <button class="notGoing"
+            [disabled]="sameUser || alreadyNotGoing"
+            (click)="notGoingToEvent()">
+      <i class="fa fa-ban"
+         aria-hidden="true"></i>
+    </button>
+  </div>
 </main>

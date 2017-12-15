@@ -7,7 +7,7 @@
   margin: 0;
 }
 
-aside{
+aside {
   position: fixed;
   width: 300px;
   top: 0;
@@ -18,14 +18,14 @@ aside{
   height: 100%;
 }
 
-section{
+section {
   position: relative;
   width: calc(100% - 300px);
   min-height: 100%;
   float: left;
 }
 
-header{
+header {
   width: 100%;
   height: 40vh;
   background: center center no-repeat;
@@ -34,38 +34,38 @@ header{
 }
 
 .hidden,
-header h2{
+header h2 {
   display: none;
 }
 
-p{
+p {
   color: var(--sea-green);
 }
 
-.content{
+.content {
   padding: 2rem;
   position: relative;
 }
 
-button{
+button {
   margin: .625rem 0;
 }
 
 .user,
 .btn-group,
-.event-info{
+.event-info {
   width: 100%;
   float: left;
 }
 
-.user p{
+.user p {
   color: var(--dark-gray);
   margin: .2rem 0;
   width: calc(100% - (80px + .630rem));
   float: right;
 }
 
-.user img{
+.user img {
   float: left;
   border-radius: 50%;
   margin: 0 .315rem;
@@ -73,16 +73,16 @@ button{
   height: 80px;
 }
 
-.btn-group{
+.btn-group {
   margin: .625rem 0;
 }
 
-.event-info p{
+.event-info p {
   color: var(--dark-gray);
   font-size: 1.125rem;
 }
 
-.event-info .title{
+.event-info .title {
   font-size: 1.25rem;
 }
 
@@ -120,27 +120,106 @@ button{
   font-size: 1.5rem;
 }
 
-@media only screen and (max-width: 767px){
-  #description{
+.btn-group-md,
+.dashboard{
+  display: none;
+}
+
+@media only screen and (max-width: 767px) {
+  #description {
     width: 100%;
   }
 
-  section{
+  section {
     width: 100%;
   }
 
   .user,
-  .event-info{
+  .event-info {
     width: 100%;
     float: none;
     overflow: hidden;
   }
 
-  .hidden{
+  .content{
+    padding: 2rem 2rem 4rem 2rem;
+  }
+
+  .hidden {
     display: block;
   }
 
-  aside{
+  aside {
     display: none;
+  }
+
+  .fa-pencil,
+  .fa-trash {
+    font-size: 1.75rem;
+  }
+
+  .dashboard{
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    display: block;
+    background: var(--sea-green);
+  }
+
+  .btn-group-md {
+    display: block;
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    width: 46px;
+    max-height: 46px;
+    overflow: hidden;
+    transition: all .4s ease-in-out;
+    z-index: 3;
+  }
+
+  .btn-group-md.active {
+    max-height: 300px;
+  }
+
+  button {
+    margin: .125rem;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    height: 44px;
+    width: 44px;
+    color: var(--white);
+    font-size: 1.5rem;
+  }
+
+  button::before,
+  button::after {
+    background: transparent;
+  }
+
+  .openBtn {
+    background: var(--lavanda);
+    border-color: var(--lavanda);
+  }
+
+  .partecipate{
+    background: var(--sea-green);
+  }
+
+  .interested{
+    background: var(--light-blue);
+    border-color: var(--light-blue);
+  }
+
+  .notGoing{
+    background: var(--light-red);
+    border-color: var(--light-red);
+  }
+
+  .partecipate[disabled],
+  .interested[disabled],
+  .notGoing[disabled]{
+    background: var(--dark-gray);
   }
 }

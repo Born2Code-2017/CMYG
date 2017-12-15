@@ -11,6 +11,9 @@
   --white: #fff;
   --black: #000;
   --red: #f00;
+  --light-red: #ff3366;
+  --light-blue: #3366ff;
+  --lavanda: #b388eb;
   --trans: all .4s ease;
 }
 
