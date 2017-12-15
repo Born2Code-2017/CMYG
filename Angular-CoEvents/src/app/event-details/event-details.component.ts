@@ -202,7 +202,7 @@ export class EventDetailsComponent implements OnInit {
       return res;
     }, {});
 
-    this.removePartOtInt();
+    this.removePartOrInt();
 
     this.managerDB.addNotGoing(this.id, notGoing).subscribe(arg => console.log(arg));
     alert('You\'ll not go to the event\nYou\'ll be redirected to the dashboard');
@@ -235,7 +235,11 @@ export class EventDetailsComponent implements OnInit {
         if (this.loggedUser === this.notGoing[ng]) {
           delete this.notGoing[ng];
           if (lodash.isEmpty(this.notGoing)) {
-            const notGoing = {null: 'int'};
+            const notGoing = {
+              notGoing: {
+                null: 'int'
+              }
+            };
             this.managerDB.patchPeople(this.id, notGoing).subscribe(arg => console.log(arg));
           } else {
             const fireNotGoing = {notGoing: this.notGoing};
@@ -273,7 +277,11 @@ export class EventDetailsComponent implements OnInit {
         if (this.loggedUser === this.notGoing[ng]) {
           delete this.notGoing[ng];
           if (lodash.isEmpty(this.notGoing)) {
-            const notGoing = {null: 'int'};
+            const notGoing = {
+              notGoing: {
+                null: 'int'
+              }
+            };
             this.managerDB.patchPeople(this.id, notGoing).subscribe(arg => console.log(arg));
           } else {
             const fireNotGoing = {notGoing: this.notGoing};
@@ -285,7 +293,7 @@ export class EventDetailsComponent implements OnInit {
     }
   }
 
-  removePartOtInt() {
+  removePartOrInt() {
     for (const part in this.partecipants) {
       if (this.partecipants.hasOwnProperty(part)) {
         if (this.loggedUser === this.partecipants[part]) {
